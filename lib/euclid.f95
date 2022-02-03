@@ -19,3 +19,20 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \author      Kevin Matthes
+!> \brief       A possible implementation of the Euclidean Algorithm.
+!> \copyright   (C) 2022 Kevin Matthes.
+!>              This file is licensed GPL 2 as of June 1991.
+!> \date        2022
+!> \file        euclid.f95
+!>
+!> This file provides an implementation of the Euclidean Algorithm.  It works
+!> fine with both positive and negative integers and does not care about their
+!> order when passed to the function.
+!>
+!> The compilation of this file requires at least Fortran 95 support.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
