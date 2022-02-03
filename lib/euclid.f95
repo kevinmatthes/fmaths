@@ -38,3 +38,50 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   Calculate the Greatest Common Divisor of two given integers.
+!> \param   a   One of the integers to process.
+!> \param   b   One of the integers to process.
+!> \return  The Greatest Common Divisor of the given integers.
+!>
+!> This implementation works fine with both positive and negative integers and
+!> does not care about the actual order they were passed to the function.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      integer function euclid (a, b)
+      integer   :: a
+      integer   :: b
+      integer   :: greater
+      integer   :: lesser
+      integer   :: remainder
+
+      greater   = max (abs (a), abs (b))
+      lesser    = min (abs (a), abs (b))
+
+      if      (greater .eq. 0 .and. lesser .eq. 0) then
+          euclid    = 2 ** 31 - 1
+      else if (greater .eq. 0) then
+          euclid    = lesser
+      else if (lesser  .eq. 0) then
+          euclid    = greater
+      else
+    1     continue
+
+          if (lesser .eq. 0) then
+              goto 2
+          else
+              remainder = mod (greater, lesser)
+              greater   = lesser
+              lesser    = remainder
+              goto 1
+          endif
+          
+    2     continue
+
+          euclid = greater
+      endif
+
+      end
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
