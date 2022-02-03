@@ -50,6 +50,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
       integer function euclid (a, b)
+
       integer   :: a
       integer   :: b
       integer   :: greater
@@ -76,7 +77,7 @@
               lesser    = remainder
               goto 1
           endif
-          
+
     2     continue
 
           euclid = greater
