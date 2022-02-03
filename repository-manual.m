@@ -19,7 +19,7 @@
 %%%%
 %%
 %%  FILE
-%%      pandoc-repository.m
+%%      repository-manual.m
 %%
 %%  BRIEF
 %%      Create a LaTeX documentation for this repository using `pandoc`.
@@ -75,7 +75,7 @@ files.license       = [directories.md 'heading-license.md ' files.license];
 
 files.newpage       = [directories.md 'newpage.md '];
 
-files.self          = ' pandoc-repository.m ';
+files.self          = ' repository-manual.m ';
 
 files.source        = ' ./authors.yaml ./project.yaml ';
 files.source        = [files.source directories.yaml manual.language '.yaml '];
