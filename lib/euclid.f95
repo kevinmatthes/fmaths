@@ -26,6 +26,8 @@
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
 !> \file        euclid.f95
+!> \note        See `LICENSE' for full license.
+!>              See `README.md' for project details.
 !>
 !> This file provides an implementation of the Euclidean Algorithm.  It works
 !> fine with both positive and negative integers and does not care about their
