@@ -19,10 +19,10 @@
 %%%%
 %%
 %%  FILE
-%%      gcc-objects.m
+%%      gfortran-95-objects.m
 %%
 %%  BRIEF
-%%      Create object files from C source code using `gcc`.
+%%      Create object files from Fortran source code using `gfortran`.
 %%
 %%  AUTHOR
 %%      Kevin Matthes
@@ -47,15 +47,15 @@
 %%%%
 
 % Software.
-software.compiler.self  = ' gcc ';
-software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic -c ';
+software.compiler.self  = ' gfortran ';
+software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic -std=f95 -c ';
 software.compiler.call  = [software.compiler.self software.compiler.flags];
 
 
 
 % Files.
-files.self      = ' gcc-objects.m ';
-files.source    = ' *.c ';
+files.self      = ' gfortran-95-objects.m ';
+files.source    = ' *.f95 ';
 
 
 
