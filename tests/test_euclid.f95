@@ -48,6 +48,18 @@
           failures  = failures + 1
       endif
 
+      if (euclid (42, -23) .ne. 1) then
+          failures  = failures + 1
+      endif
+
+      if (euclid (-42, 23) .ne. 1) then
+          failures  = failures + 1
+      endif
+
+      if (euclid (-42, -23) .ne. 1) then
+          failures  = failures + 1
+      endif
+
       call exit (failures)
 
       end
