@@ -45,7 +45,6 @@
       failures  = 0
 
       if (euclid (42, 23) .ne. 1) then
-
           failures  = failures + 1
       endif
 
