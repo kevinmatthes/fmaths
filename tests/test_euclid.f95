@@ -21,66 +21,35 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       A possible implementation of the Euclidean Algorithm.
+!> \brief       Tests for the Euclidean Algorithm.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        euclid.f95
+!> \file        test_euclid.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
+!> \sa          euclid
 !>
-!> This file provides an implementation of the Euclidean Algorithm.  It works
-!> fine with both positive and negative integers and does not care about their
-!> order when passed to the function.
+!> This file provides a test routine for `euclid.f95`.
 !>
-!> The compilation of this file requires at least Fortran 95 support.
+!> The compilation of this file requires at least Fortran 95 support as well as
+!> access to the GNU Fortran Extensions.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!
-!> \brief   Calculate the Greatest Common Divisor of two given integers.
-!> \param   a   One of the integers to process.
-!> \param   b   One of the integers to process.
-!> \return  The Greatest Common Divisor of the given integers.
-!>
-!> This implementation works fine with both positive and negative integers and
-!> does not care about the actual order they were passed to the function.
-!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      program test_euclid
 
-      integer function euclid (a, b)
-      integer   :: a
-      integer   :: b
-      integer   :: greater
-      integer   :: lesser
-      integer   :: remainder
+      integer   :: euclid
+      integer   :: failures
 
-      greater   = max (abs (a), abs (b))
-      lesser    = min (abs (a), abs (b))
+      failures  = 0
 
-      if      (greater .eq. 0 .and. lesser .eq. 0) then
-          euclid    = 2 ** 31 - 1
-      else if (greater .eq. 0) then
-          euclid    = lesser
-      else if (lesser  .eq. 0) then
-          euclid    = greater
-      else
-    1     continue
+      if (euclid (42, 23) .ne. 1) then
 
-          if (lesser .eq. 0) then
-              goto 2
-          else
-              remainder = mod (greater, lesser)
-              greater   = lesser
-              lesser    = remainder
-              goto 1
-          endif
-          
-    2     continue
-
-          euclid = greater
+          failures  = failures + 1
       endif
+
+      call exit (failures)
 
       end
 
