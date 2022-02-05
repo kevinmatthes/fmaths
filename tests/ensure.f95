@@ -37,8 +37,19 @@
 !> The aim of this subroutine is it therefore to provide such a simple condition
 !> check centrally.
 !>
-!> The compilation of this file requires at least Fortran 95 support as well as
-!> access to the GNU Fortran Extensions.
+!> The compilation of this file requires at least Fortran 95 support.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   Ensure a logical condition to be fulfilled.
+!> \param   expression  The expression to ensure.
+!> \param   return      The check result.
+!>
+!> This subroutine will check if a given expression will evaluate to `.true.`.
+!> Only in case that the given expression is false, `return` will be incremented
+!> by one.  Otherwise, `return` will remain unchanged.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
