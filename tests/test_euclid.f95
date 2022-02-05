@@ -47,8 +47,8 @@
 !> * both arguments are zero
 !> * one arguments is non-zero
 !> * both arguments are non-zero
-!> * one arguments is prime number, the other one is zero
-!> * one arguments is prime number, the other one is non-zero
+!> * one arguments is a prime number, the other one is zero
+!> * one arguments is a prime number, the other one is non-zero
 !> * both arguments are prime numbers
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
