@@ -40,6 +40,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \brief   The main function in order to test `euclid`.
+!> \return  The count of mismatched expectation.
 !>
 !> This program will check if `euclid` matches the expected return values.
 !> These tests include the following cases:
