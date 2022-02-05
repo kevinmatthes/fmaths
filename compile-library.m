@@ -19,10 +19,10 @@
 %%%%
 %%
 %%  FILE
-%%      repository-manual.m
+%%      compile-library.m
 %%
 %%  BRIEF
-%%      Create a LaTeX documentation for this repository using `pandoc`.
+%%      Create the main library of this repository.
 %%
 %%  AUTHOR
 %%      Kevin Matthes
@@ -46,59 +46,27 @@
 %%
 %%%%
 
-% Settings.
-manual.language = 'British';
-manual.paper    = 'a4-3x3-duplex';
-manual.style    = 'scrartcl';
-
-
-
 % Software.
-software.compiler.self  = ' pandoc ';
-software.compiler.flags = ' -N ';
-software.compiler.call  = [software.compiler.self software.compiler.flags];
+software.octave = ' octave ';
 
 
 
 % Directories.
-directories.md      = './docs-snippets/markdown/';
-directories.yaml    = './docs-snippets/yaml/';
+directories.lib     = ' ./lib/ ';
 
 
 
 % Files.
-files.code.begin    = [directories.md 'begin-code.md '];
-files.code.end      = [directories.md 'end-code.md '];
-
-files.license       = [files.code.begin ' ./LICENSE ' files.code.end];
-files.license       = [directories.md 'heading-license.md ' files.license];
-
-files.newpage       = [directories.md 'newpage.md '];
-
-files.self          = ' repository-manual.m ';
-
-files.source        = ' ./authors.yaml ./project.yaml ';
-files.source        = [files.source directories.yaml manual.language '.yaml '];
-files.source        = [files.source directories.yaml manual.paper '.yaml '];
-files.source        = [files.source directories.yaml manual.style '.yaml '];
-files.source        = [files.source files.newpage];
-files.source        = [files.source ' ./README.md '];
-files.source        = [files.source files.newpage];
-files.source        = [files.source files.license];
-files.source        = [files.source files.newpage];
-
-files.target        = ' repository.pdf ';
+files.mklib = ' ar-create.m ';
+files.mkobj = ' gfortran-95-objects.m ';
+files.rmlib = ' clean-libraries.m ';
+files.rmobj = ' clean-objects.m ';
+files.self  = ' compile-library.m ';
 
 
 
 % Control flow.
 banner  = ['[' files.self '] '];
-
-
-
-% Call adjustment.
-software.compiler.call  = [software.compiler.call files.source];
-software.compiler.call  = [software.compiler.call ' -o ' files.target];
 
 
 
@@ -113,13 +81,18 @@ disp ([banner 'Begin build instruction.']);
 
 
 
-% Call Pandoc.
-disp ([banner 'Compile Pandoc documentation ...']);
+% Adjust working directory.
+fprintf ([banner 'Set working directory to ' directories.lib ' ... ']);
+cd (directories.lib);
+disp ('Done.');
 
-disp (software.compiler.call);
-system (software.compiler.call);
 
-disp ([banner 'Done.']);
+
+% Process build instructions.
+system ([software.octave files.rmlib]);
+system ([software.octave files.mkobj]);
+system ([software.octave files.mklib]);
+system ([software.octave files.rmobj]);
 
 
 
