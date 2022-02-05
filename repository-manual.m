@@ -85,9 +85,9 @@ files.source        = [files.source files.newpage];
 files.source        = [files.source ' ./README.md '];
 files.source        = [files.source files.newpage];
 files.source        = [files.source ' ./lib/README.md '];
-files.source        = [files.source files.newpage];
-files.source        = [files.source ' ./tests/README.md '];
 % files.source        = [files.source files.newpage];
+files.source        = [files.source ' ./tests/README.md '];
+files.source        = [files.source files.newpage];
 files.source        = [files.source files.license];
 files.source        = [files.source files.newpage];
 
