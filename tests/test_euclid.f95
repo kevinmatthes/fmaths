@@ -40,7 +40,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \brief   The main function in order to test `euclid`.
-!> \return  The count of mismatched expectation.
+!> \return  The count of mismatched expectations.
 !>
 !> This program will check if `euclid` matches the expected return values.
 !> These tests include the following cases:
@@ -51,6 +51,10 @@
 !> * one arguments is a prime number, the other one is zero
 !> * one arguments is a prime number, the other one is non-zero
 !> * both arguments are prime numbers
+!>
+!> Once the tests are done, the number of mismatched expectations will be
+!> written to `stdout` and will be set as exit code of the resulting
+!> application.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
