@@ -39,6 +39,8 @@
 
       program test_euclid
 
+      implicit none
+
       integer   :: euclid
       integer   :: failures
 
