@@ -50,7 +50,7 @@
       logical, intent (in)  :: expression
 
       if (.not. expression) then
-          return += return
+          return = return + 1
       endif
 
       end
