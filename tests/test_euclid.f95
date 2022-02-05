@@ -28,7 +28,6 @@
 !> \file        test_euclid.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
-!> \sa          euclid
 !>
 !> This file provides a test routine for `euclid.f95`.
 !>
@@ -41,6 +40,8 @@
 !!
 !> \brief   The main function in order to test `euclid`.
 !> \return  The count of mismatched expectations.
+!> \sa      ensure
+!> \sa      euclid
 !>
 !> This program will check if `euclid` matches the expected return values.
 !> These tests include the following cases:
