@@ -43,4 +43,7 @@
 
 This directory contains the tests for the source code of `../lib/`.
 
+Like the main source code, these tests are documented, as well.  The information
+for them will appear in the main documentation of the library code.
+
 <!----------------------------------------------------------------------------->
