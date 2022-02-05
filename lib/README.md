@@ -39,9 +39,19 @@
 --
 ------------------------------------------------------------------------------->
 
-# `./blank/`
+# `./lib/`
 
-This directory contains a set of miscellaneous empty files for various purposes.
-These files can be considered templates and can be altered as required.
+## Description
+
+This directory contains the Fortran source code for the provided library.
+
+The library is built using GNU Octave whose installation therefore needs to be
+ensured.
+
+## Content
+
+| File          | Description                                   |
+|:--------------|:----------------------------------------------|
+| `euclid.f95`  | The Euclidean Algorithm.                      |
 
 <!----------------------------------------------------------------------------->
