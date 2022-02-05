@@ -128,9 +128,10 @@
 
 
 
-      print *, '[euclid] ', failures
-
-      call exit (failures)
+      if (failures .ne. 0) then
+          print *, failures, '[euclid.f95]'
+          call exit (failures)
+      endif
 
       end
 
