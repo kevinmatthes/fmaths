@@ -51,6 +51,8 @@
 
       integer function euclid (a, b)
 
+      implicit none
+
       integer   :: a
       integer   :: b
       integer   :: greater
