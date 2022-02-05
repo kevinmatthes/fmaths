@@ -46,6 +46,10 @@
 !>
 !> This implementation works fine with both positive and negative integers and
 !> does not care about the actual order they were passed to the function.
+!>
+!> Regarding the further behaviour, this function is intended to return the same
+!> values `Prelude.gcd` of Haskell would return.  Hence, `euclid (0, 0)` would
+!> result in `0`, for instance.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
