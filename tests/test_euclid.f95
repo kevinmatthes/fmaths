@@ -50,8 +50,12 @@
       call ensure (euclid ( 42, -23) .eq. 1, failures)
       call ensure (euclid (-42,  23) .eq. 1, failures)
       call ensure (euclid (-42, -23) .eq. 1, failures)
+      call ensure (euclid ( 23,  42) .eq. 1, failures)
+      call ensure (euclid ( 23, -42) .eq. 1, failures)
+      call ensure (euclid (-23,  42) .eq. 1, failures)
+      call ensure (euclid (-23, -42) .eq. 1, failures)
 
-      print *, '[euclid.f95] Found failures: ', failures
+      print *, '[euclid] ', failures
 
       call exit (failures)
 
