@@ -45,7 +45,7 @@
 !!
 !> \brief   Ensure a logical condition to be fulfilled.
 !> \param   expression  The expression to ensure.
-!> \param   return      The check result.
+!> \param   return      The test result.
 !>
 !> This subroutine will check if a given expression will evaluate to `.true.`.
 !> Only in case that the given expression is false, `return` will be incremented

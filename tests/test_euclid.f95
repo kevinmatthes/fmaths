@@ -37,6 +37,22 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   The main function in order to test `euclid`.
+!>
+!> This program will check if `euclid` matches the expected return values.
+!> These tests include the following cases:
+!>
+!> * both arguments are zero
+!> * one arguments is non-zero
+!> * both arguments are non-zero
+!> * one arguments is prime number, the other one is zero
+!> * one arguments is prime number, the other one is non-zero
+!> * both arguments are prime numbers
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
       program test_euclid
 
       implicit none
