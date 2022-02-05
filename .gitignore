@@ -51,6 +51,7 @@
 # Doxygen documentation.
 html/
 latex/
+*.pdf
 
 # Tests.
 test_euclid
