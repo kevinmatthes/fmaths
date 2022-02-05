@@ -21,48 +21,37 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       Tests for the Euclidean Algorithm.
+!> \brief       A simple test utility.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        test_euclid.f95
+!> \file        ensure.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
-!> \sa          euclid
 !>
-!> This file provides a test routine for `euclid.f95`.
+!> Numerous tests require the check of an expression for equality with a certain
+!> expectation as well as the reporting of the test result.  In its simplest
+!> form, such function which shall "ensure" a certain condition will cause many
+!> lines of redundant code.
+!>
+!> The aim of this subroutine is it therefore to provide such a simple condition
+!> check code once centrally.
 !>
 !> The compilation of this file requires at least Fortran 95 support as well as
 !> access to the GNU Fortran Extensions.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      program test_euclid
+      subroutine ensure (expression, return)
 
       implicit none
 
-      integer   :: euclid
-      integer   :: failures
+      integer, intent (out) :: return
+      logical, intent (in)  :: expression
 
-      failures  = 0
-
-      if (euclid (42, 23) .ne. 1) then
-          failures  = failures + 1
+      if (.not. expression) then
+          return += return
       endif
-
-      if (euclid (42, -23) .ne. 1) then
-          failures  = failures + 1
-      endif
-
-      if (euclid (-42, 23) .ne. 1) then
-          failures  = failures + 1
-      endif
-
-      if (euclid (-42, -23) .ne. 1) then
-          failures  = failures + 1
-      endif
-
-      call exit (failures)
 
       end
 
