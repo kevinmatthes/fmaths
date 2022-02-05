@@ -39,19 +39,8 @@
 --
 ------------------------------------------------------------------------------->
 
-# `./lib/`
+# `./tests/`
 
-## Description
-
-This directory contains the Fortran source code for the provided library.
-
-The library is built using GNU Octave whose installation therefore needs to be
-ensured.
-
-## Content
-
-| File          | Description                                   |
-|:--------------|:----------------------------------------------|
-| `euclid.f95`  | The Euclidean Algorithm.                      |
+This directory contains the tests for the source code of `../lib/`.
 
 <!----------------------------------------------------------------------------->
