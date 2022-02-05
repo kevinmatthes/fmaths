@@ -31,11 +31,11 @@
 !>
 !> Numerous tests require the check of an expression for equality with a certain
 !> expectation as well as the reporting of the test result.  In its simplest
-!> form, such function which shall "ensure" a certain condition will cause many
-!> lines of redundant code.
+!> form, such a function which shall "ensure" a certain condition will cause
+!> many lines of redundant code.
 !>
 !> The aim of this subroutine is it therefore to provide such a simple condition
-!> check code once centrally.
+!> check centrally.
 !>
 !> The compilation of this file requires at least Fortran 95 support as well as
 !> access to the GNU Fortran Extensions.
