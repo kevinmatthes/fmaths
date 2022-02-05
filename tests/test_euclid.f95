@@ -46,21 +46,12 @@
 
       failures  = 0
 
-      if (euclid (42, 23) .ne. 1) then
-          failures  = failures + 1
-      endif
+      call ensure (euclid ( 42,  23) .eq. 1, failures)
+      call ensure (euclid ( 42, -23) .eq. 1, failures)
+      call ensure (euclid (-42,  23) .eq. 1, failures)
+      call ensure (euclid (-42, -23) .eq. 1, failures)
 
-      if (euclid (42, -23) .ne. 1) then
-          failures  = failures + 1
-      endif
-
-      if (euclid (-42, 23) .ne. 1) then
-          failures  = failures + 1
-      endif
-
-      if (euclid (-42, -23) .ne. 1) then
-          failures  = failures + 1
-      endif
+      print *, '[euclid.f95] Found failures: ', failures
 
       call exit (failures)
 
