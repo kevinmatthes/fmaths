@@ -49,7 +49,7 @@
 !>
 !> This subroutine will check if a given expression will evaluate to `.true.`.
 !> Only in case that the given expression is false, `return` will be incremented
-!> by one.  Otherwise, `return` will remain unchanged.
+!> by one.  Otherwise, it will remain unchanged.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
