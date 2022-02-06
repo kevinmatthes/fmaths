@@ -21,17 +21,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       A possible implementation of the Euclidean Algorithm.
+!> \brief       A possible implementation of the Fibonacci Numbers.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        euclid.f95
+!> \file        fibonacci.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides an implementation of the Euclidean Algorithm.  It works
-!> fine with both positive and negative integers and does not care about their
-!> order when passed to the function.
+!> This file provides an implementation of the Fibonacci Numbers.
 !>
 !> The compilation of this file requires at least Fortran 95 support.
 !!
@@ -39,52 +37,46 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   Calculate the Greatest Common Divisor of two given integers.
-!> \param   a   One of the integers to process.
-!> \param   b   One of the integers to process.
-!> \return  The Greatest Common Divisor of the given integers.
+!> \brief   Calculate the n-th Fibonacci Number.
+!> \param   n   The Fibonacci Number to calculate.
+!> \return  The n-th Fibonacci Number.
 !>
-!> This implementation works fine with both positive and negative integers and
-!> does not care about the actual order they were passed to the function.
-!>
-!> Regarding the further behaviour, this function is intended to return the same
-!> values `Prelude.gcd` of Haskell would return.  Hence, `euclid (0, 0)` would
-!> result in `0`, for instance.
+!> This implementation determines the Fibonacci Numbers iteratively.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      integer function euclid (a, b)
+      integer function fibonacci (n)
 
       implicit none
 
-      integer   :: a
-      integer   :: b
-      integer   :: greater
-      integer   :: lesser
-      integer   :: remainder
+      integer   :: n
+      integer   :: first
+      integer   :: iteration
+      integer   :: return
+      integer   :: second
 
-      greater   = max (abs (a), abs (b))
-      lesser    = min (abs (a), abs (b))
+      first     = 0
+      iteration = 2
+      second    = 1
 
-      if (greater .eq. 0) then
-          euclid    = lesser
-      else if (lesser  .eq. 0) then
-          euclid    = greater
+      if (n .eq. 1) then
+          fibonacci = first
+      else if (n .eq. 2) then
+          fibonacci = second
       else
     1     continue
 
-          if (lesser .eq. 0) then
+          if (iteration .eq. n) then
               goto 2
           else
-              remainder = mod (greater, lesser)
-              greater   = lesser
-              lesser    = remainder
+              iteration = iteration + 1
+              fibonacci = first + second
+              first     = second
+              second    = fibonacci
               goto 1
           endif
 
     2     continue
-
-          euclid = greater
       endif
 
       end
