@@ -53,15 +53,15 @@ software.octave = ' octave ';
 
 % Directories.
 directories.lib     = './lib/';
+directories.test    = './tests/';
 
 
 
 % Files.
-files.mklib = ' ar-create.m ';
-files.mkobj = ' gfortran-95-objects.m ';
-files.rmlib = ' clean-libraries.m ';
-files.rmobj = ' clean-objects.m ';
-files.self  = ' test-library.m ';
+files.librunner     = ' compile-library.m ';
+files.rmlib         = ' clean-libraries.m ';
+files.self          = ' test-library.m ';
+files.testrunner    = ' gfortran-95-tests.m ';
 
 
 
@@ -81,18 +81,21 @@ disp ([banner 'Begin build instruction.']);
 
 
 
-% Adjust working directory.
-fprintf ([banner 'Set working directory to ' directories.lib ' ... ']);
+% Compile library.
+system ([software.octave files.librunner]);
+
+
+
+% Run test suites.
+directories.current = cd (directories.test);
+system ([software.octave files.testrunner]);
+cd (directories.current);
+
+
+
+% Clean up libraries.
 cd (directories.lib);
-disp ('Done.');
-
-
-
-% Process build instructions.
 system ([software.octave files.rmlib]);
-system ([software.octave files.mkobj]);
-system ([software.octave files.mklib]);
-system ([software.octave files.rmobj]);
 
 
 
