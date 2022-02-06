@@ -64,7 +64,7 @@ software.check.call     = [software.check.self software.check.flags];
 
 
 % Files.
-files.euclid.out    = ' ./test_euclid ';
+files.euclid.out    = './test_euclid';
 files.euclid.self   = ' test_euclid.f95 ';
 files.self          = ' gfortran-95-tests.m ';
 
