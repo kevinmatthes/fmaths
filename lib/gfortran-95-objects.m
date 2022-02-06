@@ -80,7 +80,7 @@ disp ([banner 'Begin build instruction.']);
 
 
 
-% Call C compiler.
+% Call Fortran compiler.
 disp ([banner 'Compile object files ...']);
 
 disp (software.compiler.call);
