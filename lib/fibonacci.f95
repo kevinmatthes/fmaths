@@ -52,7 +52,6 @@
       integer   :: n
       integer   :: first
       integer   :: iteration
-      integer   :: return
       integer   :: second
 
       first     = 0
