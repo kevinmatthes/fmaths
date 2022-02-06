@@ -122,7 +122,7 @@ end;
 fprintf ([banner 'Remove test suites ... ']);
 
 if ~ system ([software.check.call files.euclid.out]);
-    delete (file.euclid.out);
+    delete (files.euclid.out);
 end;
 
 disp ('Done.');
