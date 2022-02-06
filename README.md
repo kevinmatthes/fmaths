@@ -71,6 +71,4 @@ When compiling a printable version of this documentation using Pandoc, the full
 license will be attached automatically to the resulting document.  This can be
 invoked by calling `repository-manual.m`.
 
-## Description
-
 <!----------------------------------------------------------------------------->
