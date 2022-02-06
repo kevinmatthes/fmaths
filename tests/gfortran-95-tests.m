@@ -121,7 +121,7 @@ end;
 % Remove test applications.
 fprintf ([banner 'Remove test suites ... ']);
 
-if ~ system ([software.check.call file.euclid.out]);
+if ~ system ([software.check.call files.euclid.out]);
     delete (file.euclid.out);
 end;
 
