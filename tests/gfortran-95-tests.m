@@ -19,10 +19,10 @@
 %%%%
 %%
 %%  FILE
-%%      gfortran-95-objects.m
+%%      gfortran-95-tests.m
 %%
 %%  BRIEF
-%%      Create object files from Fortran source code using `gfortran`.
+%%      Test the provided Fortran source code using `gfortran`.
 %%
 %%  AUTHOR
 %%      Kevin Matthes
@@ -48,24 +48,39 @@
 
 % Software.
 software.compiler.self  = ' gfortran ';
-software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic -std=f95 -c ';
+
+software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic '
+software.compiler.flags = [software.compiler.flags ' -std=f95 '];
+software.compiler.flags = [software.compiler.flags ' -fall-instrinsics '];
+
+software.compiler.link  = ' ensure.f95 -L../lib/ -lfmaths ';
+
 software.compiler.call  = [software.compiler.self software.compiler.flags];
+
+software.check.self     = ' test ';
+software.check.flags    = ' -e ';
+software.check.call     = [software.check.self software.check.flags];
 
 
 
 % Files.
-files.self      = ' gfortran-95-objects.m ';
-files.source    = ' *.f95 ';
+files.euclid.out    = ' ./test_euclid ';
+files.euclid.self   = ' test_euclid.f95 ';
+files.self          = ' gfortran-95-tests.m ';
 
 
 
 % Control flow.
-banner  = ['[' files.self '] '];
+banner      = ['[' files.self '] '];
+failures    = 0;
 
 
 
 % Call adjustment.
-software.compiler.call  = [software.compiler.call files.source];
+software.compiler.euclid    = [software.compiler.call files.euclid.self];
+software.compiler.euclid    = [software.compiler.call software.compiler.link];
+software.compiler.euclid    = [software.compiler.call ' -o '];
+software.compiler.euclid    = [software.compiler.call files.euclid.out];
 
 
 
@@ -80,13 +95,37 @@ disp ([banner 'Begin build instruction.']);
 
 
 
-% Call C compiler.
-disp ([banner 'Compile object files ...']);
+% Call Fortran compiler.
+disp ([banner 'Compile test suites ...']);
 
-disp (software.compiler.call);
-system (software.compiler.call);
+disp (software.compiler.euclid);
+system (software.compiler.euclid);
 
 disp ([banner 'Done.']);
+
+
+
+% Run tests.
+disp ([banner 'Run tests ...']);
+
+failures += system (files.euclid.out);
+
+if ~ failures;
+    disp ([banner 'No failures found.']);
+else;
+    disp ([banner 'Done.']);
+end;
+
+
+
+% Remove test applications.
+fprintf ([banner 'Remove test suites ... ']);
+
+if ~ system ([software.check.call file.euclid.out]);
+    delete (file.euclid.out);
+end;
+
+disp ('Done.');
 
 
 
