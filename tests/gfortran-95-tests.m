@@ -49,7 +49,7 @@
 % Software.
 software.compiler.self  = ' gfortran ';
 
-software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic '
+software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic ';
 software.compiler.flags = [software.compiler.flags ' -std=f95 '];
 software.compiler.flags = [software.compiler.flags ' -fall-intrinsics '];
 
@@ -78,9 +78,9 @@ failures    = 0;
 
 % Call adjustment.
 software.compiler.euclid    = [software.compiler.call files.euclid.self];
-software.compiler.euclid    = [software.compiler.call software.compiler.link];
-software.compiler.euclid    = [software.compiler.call ' -o '];
-software.compiler.euclid    = [software.compiler.call files.euclid.out];
+software.compiler.euclid    = [software.compiler.euclid software.compiler.link];
+software.compiler.euclid    = [software.compiler.euclid ' -o '];
+software.compiler.euclid    = [software.compiler.euclid files.euclid.out];
 
 
 
