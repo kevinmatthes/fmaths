@@ -19,10 +19,10 @@
 %%%%
 %%
 %%  FILE
-%%      compile-library.m
+%%      test-library.m
 %%
 %%  BRIEF
-%%      Create the main library of this repository.
+%%      Test the main library of this repository.
 %%
 %%  AUTHOR
 %%      Kevin Matthes
@@ -61,7 +61,7 @@ files.mklib = ' ar-create.m ';
 files.mkobj = ' gfortran-95-objects.m ';
 files.rmlib = ' clean-libraries.m ';
 files.rmobj = ' clean-objects.m ';
-files.self  = ' compile-library.m ';
+files.self  = ' test-library.m ';
 
 
 
