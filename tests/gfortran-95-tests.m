@@ -51,7 +51,7 @@ software.compiler.self  = ' gfortran ';
 
 software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic '
 software.compiler.flags = [software.compiler.flags ' -std=f95 '];
-software.compiler.flags = [software.compiler.flags ' -fall-instrinsics '];
+software.compiler.flags = [software.compiler.flags ' -fall-intrinsics '];
 
 software.compiler.link  = ' ensure.f95 -L../lib/ -lfmaths ';
 
