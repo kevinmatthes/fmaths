@@ -63,7 +63,7 @@
 
       integer   :: lower
       integer   :: upper
-      integer   :: field (lower : upper)
+      integer, dimension (lower : upper)    :: field
 
       integer   :: f0
       integer   :: f1

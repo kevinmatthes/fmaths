@@ -61,7 +61,7 @@
 
       integer   :: failures
       integer   :: sarrus_i1d
-      integer   :: i1d (0 : 8)
+      integer, dimension (0 : 8)    :: i1d
 
       failures  = 0
 
