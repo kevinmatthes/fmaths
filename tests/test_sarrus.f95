@@ -61,26 +61,23 @@
 
       integer   :: failures
       integer   :: sarrus_i1d
+      integer   :: i1d (0 : 8)
 
       failures  = 0
 
 
 
-      call ensure (fibonacci (- 4) .eq. 0,  failures)
-      call ensure (fibonacci (- 3) .eq. 0,  failures)
-      call ensure (fibonacci (- 2) .eq. 0,  failures)
-      call ensure (fibonacci (- 1) .eq. 0,  failures)
-      call ensure (fibonacci (  0) .eq. 0,  failures)
-      call ensure (fibonacci (  1) .eq. 1,  failures)
-      call ensure (fibonacci (  2) .eq. 1,  failures)
-      call ensure (fibonacci (  3) .eq. 2,  failures)
-      call ensure (fibonacci (  4) .eq. 3,  failures)
-      call ensure (fibonacci (  5) .eq. 5,  failures)
-      call ensure (fibonacci (  6) .eq. 8,  failures)
-      call ensure (fibonacci (  7) .eq. 13, failures)
-      call ensure (fibonacci (  8) .eq. 21, failures)
-      call ensure (fibonacci (  9) .eq. 34, failures)
-      call ensure (fibonacci ( 10) .eq. 55, failures)
+      i1d (0)   = 0
+      i1d (1)   = 0
+      i1d (2)   = 0
+      i1d (3)   = 0
+      i1d (4)   = 0
+      i1d (5)   = 0
+      i1d (6)   = 0
+      i1d (7)   = 0
+      i1d (8)   = 0
+
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0,  failures)
 
 
 
