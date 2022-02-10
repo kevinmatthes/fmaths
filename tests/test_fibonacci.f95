@@ -21,15 +21,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       Tests for the Euclidean Algorithm.
+!> \brief       Tests for the Fibonacci Numbers.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        test_euclid.f95
+!> \file        test_fibonacci.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides a test routine for `euclid.f95`.
+!> This file provides a test routine for `fibonacci.f95`.
 !>
 !> The compilation of this file requires at least Fortran 95 support as well as
 !> access to the GNU Fortran Extensions.
@@ -38,12 +38,13 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   The main function in order to test `euclid`.
+!> \brief   The main function in order to test `fibonacci`.
 !> \return  The count of mismatched expectations.
 !> \sa      ensure
-!> \sa      euclid
+!> \sa      fibonacci
+!> \sa      fibonacci.f95
 !>
-!> This program will check if `euclid` matches the expected return values.
+!> This program will check if `fibonacci` matches the expected return values.
 !> These tests include the following cases:
 !>
 !> * both arguments are zero
@@ -59,77 +60,38 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      program test_euclid
+      program test_fibonacci
 
       implicit none
 
-      integer   :: euclid
       integer   :: failures
+      integer   :: fibonacci
 
       failures  = 0
 
 
 
-      ! 0 prime number(s): both arguments zero.
-      call ensure (euclid ( 0,  0) .eq. 0, failures)
-      call ensure (euclid ( 0, -0) .eq. 0, failures)
-      call ensure (euclid (-0,  0) .eq. 0, failures)
-      call ensure (euclid (-0, -0) .eq. 0, failures)
-
-      ! 0 prime number(s): one argument non-zero.
-      call ensure (euclid ( 0,  4) .eq. 4, failures)
-      call ensure (euclid ( 0, -4) .eq. 4, failures)
-      call ensure (euclid (-0,  4) .eq. 4, failures)
-      call ensure (euclid (-0, -4) .eq. 4, failures)
-      call ensure (euclid ( 4,  0) .eq. 4, failures)
-      call ensure (euclid ( 4, -0) .eq. 4, failures)
-      call ensure (euclid (-4,  0) .eq. 4, failures)
-      call ensure (euclid (-4, -0) .eq. 4, failures)
-
-      ! 0 prime number(s): both arguments non-zero.
-      call ensure (euclid (  4,  18) .eq. 2, failures)
-      call ensure (euclid (  4, -18) .eq. 2, failures)
-      call ensure (euclid (- 4,  18) .eq. 2, failures)
-      call ensure (euclid (- 4, -18) .eq. 2, failures)
-      call ensure (euclid ( 18,   4) .eq. 2, failures)
-      call ensure (euclid ( 18, - 4) .eq. 2, failures)
-      call ensure (euclid (-18,   4) .eq. 2, failures)
-      call ensure (euclid (-18, - 4) .eq. 2, failures)
-
-      ! 1 prime number(s): both arguments non-zero.
-      call ensure (euclid ( 23,  42) .eq. 1, failures)
-      call ensure (euclid ( 23, -42) .eq. 1, failures)
-      call ensure (euclid (-23,  42) .eq. 1, failures)
-      call ensure (euclid (-23, -42) .eq. 1, failures)
-      call ensure (euclid ( 42,  23) .eq. 1, failures)
-      call ensure (euclid ( 42, -23) .eq. 1, failures)
-      call ensure (euclid (-42,  23) .eq. 1, failures)
-      call ensure (euclid (-42, -23) .eq. 1, failures)
-
-      ! 1 prime number(s): one argument zero.
-      call ensure (euclid ( 0,  2) .eq. 2, failures)
-      call ensure (euclid ( 0, -2) .eq. 2, failures)
-      call ensure (euclid (-0,  2) .eq. 2, failures)
-      call ensure (euclid (-0, -2) .eq. 2, failures)
-      call ensure (euclid ( 2,  0) .eq. 2, failures)
-      call ensure (euclid ( 2, -0) .eq. 2, failures)
-      call ensure (euclid (-2,  0) .eq. 2, failures)
-      call ensure (euclid (-2, -0) .eq. 2, failures)
-
-      ! 2 prime number(s).
-      call ensure (euclid ( 23,  53) .eq. 1, failures)
-      call ensure (euclid ( 23, -53) .eq. 1, failures)
-      call ensure (euclid (-23,  53) .eq. 1, failures)
-      call ensure (euclid (-23, -53) .eq. 1, failures)
-      call ensure (euclid ( 53,  23) .eq. 1, failures)
-      call ensure (euclid ( 53, -23) .eq. 1, failures)
-      call ensure (euclid (-53,  23) .eq. 1, failures)
-      call ensure (euclid (-53, -23) .eq. 1, failures)
+      call ensure (fibonacci (- 4) .eq. 0,  failures)
+      call ensure (fibonacci (- 3) .eq. 0,  failures)
+      call ensure (fibonacci (- 2) .eq. 0,  failures)
+      call ensure (fibonacci (- 1) .eq. 0,  failures)
+      call ensure (fibonacci (  0) .eq. 0,  failures)
+      call ensure (fibonacci (  1) .eq. 1,  failures)
+      call ensure (fibonacci (  2) .eq. 1,  failures)
+      call ensure (fibonacci (  3) .eq. 2,  failures)
+      call ensure (fibonacci (  4) .eq. 3,  failures)
+      call ensure (fibonacci (  5) .eq. 5,  failures)
+      call ensure (fibonacci (  6) .eq. 8,  failures)
+      call ensure (fibonacci (  7) .eq. 13, failures)
+      call ensure (fibonacci (  8) .eq. 21, failures)
+      call ensure (fibonacci (  9) .eq. 34, failures)
+      call ensure (fibonacci ( 10) .eq. 55, failures)
 
 
+
+      print *, failures, 'fibonacci.f95'
 
       if (failures .ne. 0) then
-          print *, failures, '[euclid.f95]'
           call exit (failures)
       endif
 
