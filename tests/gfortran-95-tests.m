@@ -47,26 +47,23 @@
 %%%%
 
 % Software.
-software.compiler.self  = ' gfortran ';
-
-software.compiler.flags = ' -Wall -Werror -Wextra -Wpedantic ';
-software.compiler.flags = [software.compiler.flags ' -std=f95 '];
-software.compiler.flags = [software.compiler.flags ' -fall-intrinsics '];
-
-software.compiler.link  = ' ensure.f95 -L../lib/ -lfmaths ';
-
-software.compiler.call  = [software.compiler.self software.compiler.flags];
-
-software.check.self     = ' test ';
-software.check.flags    = ' -e ';
-software.check.call     = [software.check.self software.check.flags];
+compiler.self   = ' gfortran ';
+compiler.flags  = ' -Wall -Werror -Wextra -Wpedantic ';
+compiler.flags  = [compiler.flags ' -std=f95 '];
+compiler.flags  = [compiler.flags ' -fall-intrinsics '];
+compiler.link   = ' ensure.f95 -L../lib/ -lfmaths ';
+compiler.call   = [compiler.self compiler.flags];
 
 
 
 % Files.
-files.euclid.out    = './test_euclid';
-files.euclid.self   = ' test_euclid.f95 ';
-files.self          = ' gfortran-95-tests.m ';
+files.euclid.out        = './test_euclid';
+files.euclid.self       = ' test_euclid.f95 ';
+
+files.fibonacci.out     = './test_fibonacci';
+files.fibonacci.self    = ' test_fibonacci.f95 ';
+
+files.self              = ' gfortran-95-tests.m ';
 
 
 
@@ -77,10 +74,15 @@ failures    = 0;
 
 
 % Call adjustment.
-software.compiler.euclid    = [software.compiler.call files.euclid.self];
-software.compiler.euclid    = [software.compiler.euclid software.compiler.link];
-software.compiler.euclid    = [software.compiler.euclid ' -o '];
-software.compiler.euclid    = [software.compiler.euclid files.euclid.out];
+compiler.euclid    = [compiler.call files.euclid.self];
+compiler.euclid    = [compiler.euclid compiler.link];
+compiler.euclid    = [compiler.euclid ' -o '];
+compiler.euclid    = [compiler.euclid files.euclid.out];
+
+compiler.fibonacci = [compiler.call files.fibonacci.self];
+compiler.fibonacci = [compiler.fibonacci compiler.link];
+compiler.fibonacci = [compiler.fibonacci ' -o '];
+compiler.fibonacci = [compiler.fibonacci files.fibonacci.out];
 
 
 
@@ -98,8 +100,11 @@ disp ([banner 'Begin build instruction.']);
 % Call Fortran compiler.
 disp ([banner 'Compile test suites ...']);
 
-disp (software.compiler.euclid);
-system (software.compiler.euclid);
+disp (compiler.euclid);
+system (compiler.euclid);
+
+disp (compiler.fibonacci);
+system (compiler.fibonacci);
 
 disp ([banner 'Done.']);
 
@@ -109,6 +114,7 @@ disp ([banner 'Done.']);
 disp ([banner 'Run tests ...']);
 
 failures += system (files.euclid.out);
+failures += system (files.fibonacci.out);
 
 if ~ failures;
     disp ([banner 'No failures found.']);
@@ -121,8 +127,12 @@ end;
 % Remove test applications.
 fprintf ([banner 'Remove test suites ... ']);
 
-if ~ system ([software.check.call files.euclid.out]);
+if length (glob (files.euclid.out));
     delete (files.euclid.out);
+end;
+
+if length (glob (files.fibonacci.out));
+    delete (files.fibonacci.out);
 end;
 
 disp ('Done.');
