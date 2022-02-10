@@ -75,12 +75,12 @@
       integer   :: f7
       integer   :: f8
 
-      sarrus_i1d    =              f0 * f4 * f8
-      sarrus_i1d    = sarrus_i1d + f3 * f7 * f2
-      sarrus_i1d    = sarrus_i1d + f6 * f1 * f5
-      sarrus_i1d    = sarrus_i1d - f0 * f7 * f5
-      sarrus_i1d    = sarrus_i1d - f3 * f1 * f8
-      sarrus_i1d    = sarrus_i1d - f6 * f4 * f2
+      sarrus_i  =            f0 * f4 * f8
+      sarrus_i  = sarrus_i + f3 * f7 * f2
+      sarrus_i  = sarrus_i + f6 * f1 * f5
+      sarrus_i  = sarrus_i - f0 * f7 * f5
+      sarrus_i  = sarrus_i - f3 * f1 * f8
+      sarrus_i  = sarrus_i - f6 * f4 * f2
 
       end
 
@@ -112,6 +112,8 @@
 
       integer   :: lower
       integer   :: upper
+      integer   :: sarrus_i
+
       integer, dimension (lower : upper)    :: field
 
       integer   :: f0
@@ -136,13 +138,8 @@
           f6    = field (lower + 6)
           f7    = field (lower + 7)
           f8    = field (upper)
-
-          sarrus_i1d    =              f0 * f4 * f8
-          sarrus_i1d    = sarrus_i1d + f3 * f7 * f2
-          sarrus_i1d    = sarrus_i1d + f6 * f1 * f5
-          sarrus_i1d    = sarrus_i1d - f0 * f7 * f5
-          sarrus_i1d    = sarrus_i1d - f3 * f1 * f8
-          sarrus_i1d    = sarrus_i1d - f6 * f4 * f2
+          
+          sarrus_i1d    = sarrus_i (f0, f1, f2, f3, f4, f5, f6, f7, f8)
       endif
 
       end
