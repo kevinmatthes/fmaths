@@ -21,15 +21,19 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       A possible implementation of the Fibonacci Numbers.
+!> \brief       A possible implementation of Sarrus's Determinant Algorithm.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        fibonacci.f95
+!> \file        sarrus.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides an implementation of the Fibonacci Numbers.
+!> Sarrus's Determinant Algorithm is used in order to determine the determinant
+!> of a 3 × 3 matrix.  The provided implementations offer support for the two
+!> numeric built-in types `INTEGER` and `REAL`.  For both types, there are
+!> furthermore linear and 2D implementations due to both of them being valid
+!> representations of a matrix.
 !>
 !> The compilation of this file requires at least Fortran 95 support.
 !!
