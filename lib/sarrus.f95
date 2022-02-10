@@ -30,7 +30,7 @@
 !>              See `README.md' for project details.
 !>
 !> Sarrus's Determinant Algorithm is used in order to determine the determinant
-!> of a 3 × 3 matrix.  The provided implementations offer support for the two
+!> of a 3×3-matrix.  The provided implementations offer support for the two
 !> numeric built-in types `INTEGER` and `REAL`.  For both types, there are
 !> furthermore linear and 2D implementations due to both of them being valid
 !> representations of a matrix.
@@ -41,45 +41,57 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   Calculate the n-th Fibonacci Number.
-!> \param   n   The Fibonacci Number to calculate.
-!> \return  The n-th Fibonacci Number.
+!> \brief   Calculate the determinant of a linear 3×3-matrix.
+!> \param   field   The array providing the values.
+!> \param   lower   The lower index limit.
+!> \param   upper   The upper index limit.
+!> \return  The determinant of the given matrix.
 !>
-!> This implementation determines the Fibonacci Numbers iteratively.
+!> This implementation takes care about `INTEGER` matrices which are indexed
+!> linearly.  The matrix is assumed to be defined as follows in terms of GNU
+!> Octave: `[ 0  3  6 ; 1  4  7 ; 2  5  8 ]`.
+!>
+!> Thereby, the given number is considered the offset added to `lower`.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      integer function fibonacci (n)
+      integer function sarrus_i1d (field, lower, upper)
 
       implicit none
 
-      integer   :: n
-      integer   :: first
-      integer   :: iteration
-      integer   :: second
+      integer   :: lower
+      integer   :: upper
+      integer   :: field (lower : upper)
 
-      first     = 0
-      iteration = 1
-      second    = 1
+      integer   :: f0
+      integer   :: f1
+      integer   :: f2
+      integer   :: f3
+      integer   :: f4
+      integer   :: f5
+      integer   :: f6
+      integer   :: f7
+      integer   :: f8
 
-      if (n .le. 0) then
-          fibonacci = first
-      else if (n .eq. 1) then
-          fibonacci = second
-      else
-    1     continue
+      sarrus_i1d    = 0
 
-          if (iteration .eq. n) then
-              goto 2
-          else
-              iteration = iteration + 1
-              fibonacci = first + second
-              first     = second
-              second    = fibonacci
-              goto 1
-          endif
+      if (lower + 8 .eq. upper) then
+          f0    = field (lower)
+          f1    = field (lower + 1)
+          f2    = field (lower + 2)
+          f3    = field (lower + 3)
+          f4    = field (lower + 4)
+          f5    = field (lower + 5)
+          f6    = field (lower + 6)
+          f7    = field (lower + 7)
+          f8    = field (upper)
 
-    2     continue
+          sarrus_i1d    =              f0 * f4 * f8
+          sarrus_i1d    = sarrus_i1d + f3 * f7 * f2
+          sarrus_i1d    = sarrus_i1d + f6 * f1 * f5
+          sarrus_i1d    = sarrus_i1d - f0 * f7 * f5
+          sarrus_i1d    = sarrus_i1d - f3 * f1 * f8
+          sarrus_i1d    = sarrus_i1d - f6 * f4 * f2
       endif
 
       end
