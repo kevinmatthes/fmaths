@@ -67,6 +67,7 @@
 
 
 
+      ! sarrus_i1d.
       i1d (0)   = 0
       i1d (1)   = 0
       i1d (2)   = 0
@@ -76,8 +77,51 @@
       i1d (6)   = 0
       i1d (7)   = 0
       i1d (8)   = 0
-
       call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0,  failures)
+
+      i1d (0)   = 1
+      i1d (1)   = 0
+      i1d (2)   = 0
+      i1d (3)   = 0
+      i1d (4)   = 1
+      i1d (5)   = 0
+      i1d (6)   = 0
+      i1d (7)   = 0
+      i1d (8)   = 1
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 1,  failures)
+
+      i1d (0)   = 1
+      i1d (1)   = 2
+      i1d (2)   = 3
+      i1d (3)   = 4
+      i1d (4)   = 5
+      i1d (5)   = 6
+      i1d (6)   = 7
+      i1d (7)   = 8
+      i1d (8)   = 9
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0,  failures)
+
+      i1d (0)   = 1
+      i1d (1)   = 2
+      i1d (2)   = 3
+      i1d (3)   = 4
+      i1d (4)   = 5
+      i1d (5)   = 6
+      i1d (6)   = 7
+      i1d (7)   = 8
+      i1d (8)   = 1
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 24,  failures)
+
+      i1d (0)   = 1
+      i1d (1)   = 2
+      i1d (2)   = 3
+      i1d (3)   = 4
+      i1d (4)   = 42
+      i1d (5)   = 6
+      i1d (6)   = 7
+      i1d (7)   = 8
+      i1d (8)   = 1
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. -716,  failures)
 
 
 
