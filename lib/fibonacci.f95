@@ -58,7 +58,7 @@
       iteration = 2
       second    = 1
 
-      if (n .eq. 1) then
+      if (n .le. 1) then
           fibonacci = first
       else if (n .eq. 2) then
           fibonacci = second
