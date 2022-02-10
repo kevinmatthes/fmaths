@@ -58,9 +58,6 @@
 !>
 !> The matrix is assumed to be defined as follows in terms of GNU Octave:  `[ 0
 !> 3  6 ; 1  4  7 ; 2  5  8 ]`.
-!>
-!> In case that the given field should not provide nine elements, zero would be
-!> returned instead.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
