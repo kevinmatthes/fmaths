@@ -57,13 +57,16 @@ compiler.call   = [compiler.self compiler.flags];
 
 
 % Files.
-files.euclid.out        = './test_euclid';
-files.euclid.self       = ' test_euclid.f95 ';
+files.euclid.out    = './test_euclid';
+files.euclid.self   = ' test_euclid.f95 ';
 
 files.fibonacci.out     = './test_fibonacci';
 files.fibonacci.self    = ' test_fibonacci.f95 ';
 
-files.self              = ' gfortran-95-tests.m ';
+files.sarrus.out    = './test_sarrus';
+files.sarrus.self   = ' test_sarrus.f95 ';
+
+files.self  = ' gfortran-95-tests.m ';
 
 
 
@@ -83,6 +86,11 @@ compiler.fibonacci = [compiler.call files.fibonacci.self];
 compiler.fibonacci = [compiler.fibonacci compiler.link];
 compiler.fibonacci = [compiler.fibonacci ' -o '];
 compiler.fibonacci = [compiler.fibonacci files.fibonacci.out];
+
+compiler.sarrus = [compiler.call files.sarrus.self];
+compiler.sarrus = [compiler.sarrus compiler.link];
+compiler.sarrus = [compiler.sarrus ' -o '];
+compiler.sarrus = [compiler.sarrus files.sarrus.out];
 
 
 
@@ -106,6 +114,9 @@ system (compiler.euclid);
 disp (compiler.fibonacci);
 system (compiler.fibonacci);
 
+disp (compiler.sarrus);
+system (compiler.sarrus);
+
 disp ([banner 'Done.']);
 
 
@@ -115,6 +126,7 @@ disp ([banner 'Run tests ...']);
 
 failures += system (files.euclid.out);
 failures += system (files.fibonacci.out);
+failures += system (files.sarrus.out);
 
 if ~ failures;
     disp ([banner 'No failures found.']);
@@ -133,6 +145,10 @@ end;
 
 if length (glob (files.fibonacci.out));
     delete (files.fibonacci.out);
+end;
+
+if length (glob (files.sarrus.out));
+    delete (files.sarrus.out);
 end;
 
 disp ('Done.');
