@@ -48,9 +48,11 @@
 !> \return  The determinant of the given matrix.
 !>
 !> This implementation takes care about `INTEGER` matrices which are indexed
-!> linearly.  The matrix is assumed to be defined as follows in terms of GNU
-!> Octave: `[ 0  3  6 ; 1  4  7 ; 2  5  8 ]`.  Thereby, the given number is
-!> considered the offset to be added to `lower`.
+!> linearly.
+!>
+!> The matrix is assumed to be defined as follows in terms of GNU Octave:  `[ 0
+!> 3  6 ; 1  4  7 ; 2  5  8 ]`.  Thereby, the given number is considered the
+!> offset to be added to `lower`.
 !>
 !> In case that the given field should not provide nine elements, zero would be
 !> returned instead.
