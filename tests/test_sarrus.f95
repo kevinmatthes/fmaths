@@ -21,15 +21,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       Tests for the Fibonacci Numbers.
+!> \brief       Tests for Sarrus's Determinant Algorithm.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        test_fibonacci.f95
+!> \file        test_sarrus.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides a test routine for `fibonacci.f95`.
+!> This file provides test routines for `sarrus.f95`.
 !>
 !> The compilation of this file requires at least Fortran 95 support as well as
 !> access to the GNU Fortran Extensions.
@@ -38,18 +38,16 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   The main function in order to test `fibonacci`.
+!> \brief   The main function in order to test `sarrus.f95`.
 !> \return  The count of mismatched expectations.
 !> \sa      ensure
-!> \sa      fibonacci
-!> \sa      fibonacci.f95
+!> \sa      sarrus_i1d
+!> \sa      sarrus.f95
 !>
-!> This program will check if `fibonacci` matches the expected return values.
-!> These tests include the following cases:
+!> This program will check if all implementations match the expected return
+!> values.  These tests include the following cases:
 !>
-!> * argument < 0
-!> * argument = 0
-!> * argument > 0
+!> * none
 !>
 !> Once the tests are done, the number of mismatched expectations will be
 !> written to `stdout` and will be set as exit code of the resulting
@@ -57,12 +55,12 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      program test_fibonacci
+      program test_sarrus
 
       implicit none
 
       integer   :: failures
-      integer   :: fibonacci
+      integer   :: sarrus_i1d
 
       failures  = 0
 
@@ -86,7 +84,7 @@
 
 
 
-      print *, failures, 'fibonacci.f95'
+      print *, failures, 'sarrus.f95'
 
       if (failures .ne. 0) then
           call exit (failures)
