@@ -42,6 +42,56 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \brief   Calculate the determinant of a linear 3×3-matrix.
+!> \param   f0  The matrix element `a11`.
+!> \param   f1  The matrix element `a21`.
+!> \param   f2  The matrix element `a31`.
+!> \param   f3  The matrix element `a12`.
+!> \param   f4  The matrix element `a22`.
+!> \param   f5  The matrix element `a32`.
+!> \param   f6  The matrix element `a13`.
+!> \param   f7  The matrix element `a23`.
+!> \param   f8  The matrix element `a33`.
+!> \return  The determinant of the given matrix.
+!>
+!> This implementation handles integer matrices which are given by single
+!> values instead of being organised in a field.
+!>
+!> The matrix is assumed to be defined as follows in terms of GNU Octave:  `[ 0
+!> 3  6 ; 1  4  7 ; 2  5  8 ]`.
+!>
+!> In case that the given field should not provide nine elements, zero would be
+!> returned instead.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      integer function sarrus_i (f0, f1, f2, f3, f4, f5, f6, f7, f8)
+
+      implicit none
+
+      integer   :: f0
+      integer   :: f1
+      integer   :: f2
+      integer   :: f3
+      integer   :: f4
+      integer   :: f5
+      integer   :: f6
+      integer   :: f7
+      integer   :: f8
+
+      sarrus_i1d    =              f0 * f4 * f8
+      sarrus_i1d    = sarrus_i1d + f3 * f7 * f2
+      sarrus_i1d    = sarrus_i1d + f6 * f1 * f5
+      sarrus_i1d    = sarrus_i1d - f0 * f7 * f5
+      sarrus_i1d    = sarrus_i1d - f3 * f1 * f8
+      sarrus_i1d    = sarrus_i1d - f6 * f4 * f2
+
+      end
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   Calculate the determinant of a linear 3×3-matrix.
 !> \param   field   The array providing the values.
 !> \param   lower   The lower index limit.
 !> \param   upper   The upper index limit.
