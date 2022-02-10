@@ -47,12 +47,9 @@
 !> This program will check if `fibonacci` matches the expected return values.
 !> These tests include the following cases:
 !>
-!> * both arguments are zero
-!> * one arguments is non-zero
-!> * both arguments are non-zero
-!> * one arguments is a prime number, the other one is zero
-!> * one arguments is a prime number, the other one is non-zero
-!> * both arguments are prime numbers
+!> * argument < 0
+!> * argument = 0
+!> * argument > 0
 !>
 !> Once the tests are done, the number of mismatched expectations will be
 !> written to `stdout` and will be set as exit code of the resulting

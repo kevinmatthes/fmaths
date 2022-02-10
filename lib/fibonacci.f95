@@ -55,12 +55,12 @@
       integer   :: second
 
       first     = 0
-      iteration = 2
+      iteration = 1
       second    = 1
 
-      if (n .le. 1) then
+      if (n .le. 0) then
           fibonacci = first
-      else if (n .eq. 2) then
+      else if (n .eq. 1) then
           fibonacci = second
       else
     1     continue

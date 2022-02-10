@@ -48,10 +48,10 @@
 !> These tests include the following cases:
 !>
 !> * both arguments are zero
-!> * one arguments is non-zero
+!> * one argument is non-zero
 !> * both arguments are non-zero
-!> * one arguments is a prime number, the other one is zero
-!> * one arguments is a prime number, the other one is non-zero
+!> * one argument is a prime number, the other one is zero
+!> * one argument is a prime number, the other one is non-zero
 !> * both arguments are prime numbers
 !>
 !> Once the tests are done, the number of mismatched expectations will be
