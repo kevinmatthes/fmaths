@@ -42,6 +42,7 @@
 !> \return  The count of mismatched expectations.
 !> \sa      ensure
 !> \sa      euclid
+!> \sa      euclid.f95
 !>
 !> This program will check if `euclid` matches the expected return values.
 !> These tests include the following cases:
@@ -128,8 +129,9 @@
 
 
 
+      print *, failures, 'euclid.f95'
+
       if (failures .ne. 0) then
-          print *, failures, '[euclid.f95]'
           call exit (failures)
       endif
 
