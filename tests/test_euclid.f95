@@ -69,15 +69,11 @@
 
       failures  = 0
 
-
-
-      ! 0 prime number(s): both arguments zero.
       call ensure (euclid ( 0,  0) .eq. 0, failures)
       call ensure (euclid ( 0, -0) .eq. 0, failures)
       call ensure (euclid (-0,  0) .eq. 0, failures)
       call ensure (euclid (-0, -0) .eq. 0, failures)
 
-      ! 0 prime number(s): one argument non-zero.
       call ensure (euclid ( 0,  4) .eq. 4, failures)
       call ensure (euclid ( 0, -4) .eq. 4, failures)
       call ensure (euclid (-0,  4) .eq. 4, failures)
@@ -87,7 +83,6 @@
       call ensure (euclid (-4,  0) .eq. 4, failures)
       call ensure (euclid (-4, -0) .eq. 4, failures)
 
-      ! 0 prime number(s): both arguments non-zero.
       call ensure (euclid (  4,  18) .eq. 2, failures)
       call ensure (euclid (  4, -18) .eq. 2, failures)
       call ensure (euclid (- 4,  18) .eq. 2, failures)
@@ -97,7 +92,6 @@
       call ensure (euclid (-18,   4) .eq. 2, failures)
       call ensure (euclid (-18, - 4) .eq. 2, failures)
 
-      ! 1 prime number(s): both arguments non-zero.
       call ensure (euclid ( 23,  42) .eq. 1, failures)
       call ensure (euclid ( 23, -42) .eq. 1, failures)
       call ensure (euclid (-23,  42) .eq. 1, failures)
@@ -107,7 +101,6 @@
       call ensure (euclid (-42,  23) .eq. 1, failures)
       call ensure (euclid (-42, -23) .eq. 1, failures)
 
-      ! 1 prime number(s): one argument zero.
       call ensure (euclid ( 0,  2) .eq. 2, failures)
       call ensure (euclid ( 0, -2) .eq. 2, failures)
       call ensure (euclid (-0,  2) .eq. 2, failures)
@@ -117,7 +110,6 @@
       call ensure (euclid (-2,  0) .eq. 2, failures)
       call ensure (euclid (-2, -0) .eq. 2, failures)
 
-      ! 2 prime number(s).
       call ensure (euclid ( 23,  53) .eq. 1, failures)
       call ensure (euclid ( 23, -53) .eq. 1, failures)
       call ensure (euclid (-23,  53) .eq. 1, failures)
@@ -126,8 +118,6 @@
       call ensure (euclid ( 53, -23) .eq. 1, failures)
       call ensure (euclid (-53,  23) .eq. 1, failures)
       call ensure (euclid (-53, -23) .eq. 1, failures)
-
-
 
       print *, failures, 'euclid.f95'
 
