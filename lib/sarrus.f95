@@ -132,4 +132,56 @@
 
       end
 
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   Calculate the determinant of a 2D 3×3-matrix.
+!> \param   field   The array providing the values.
+!> \param   c_max   The lower index limit (columns).
+!> \param   c_min   The upper index limit (columns).
+!> \param   r_max   The lower index limit (rows).
+!> \param   r_min   The upper index limit (rows).
+!> \return  The determinant of the given matrix.
+!>
+!> This implementation takes care about `INTEGER` matrices which are indexed as
+!> 2D arrays.
+!>
+!> The matrix is assumed to be defined as follows in terms of GNU Octave:  `[ 0
+!> 3  6 ; 1  4  7 ; 2  5  8 ]`.  Thereby, the given number is considered the
+!> offset to be added to `lower`.
+!>
+!> In case that the given field should not provide nine elements, zero would be
+!> returned instead.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      integer function sarrus_i2d (field, c_max, c_min, r_max, r_min)
+
+      implicit none
+
+      integer                                           :: c_max
+      integer                                           :: c_min
+      integer                                           :: r_max
+      integer                                           :: r_min
+      integer                                           :: sarrus_i
+      integer, dimension (c_min : c_max, r_max : r_min) :: field
+
+      sarrus_i1d    = 0
+
+      if (c_min + 2 .eq. c_max .and. r_min + 2 .eq. r_max) then
+          sarrus_i1d    = sarrus_i ( field (c_min    , r_min    )              &
+                                   , field (c_min    , r_min + 1)              &
+                                   , field (c_min    , r_max    )              &
+                                   , field (c_min + 1, r_min    )              &
+                                   , field (c_min + 1, r_min + 1)              &
+                                   , field (c_min + 1, r_max    )              &
+                                   , field (c_max    , r_min    )              &
+                                   , field (c_max    , r_min + 1)              &
+                                   , field (c_max    , r_max    )              &
+                                   )
+      endif
+
+      end
+
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
