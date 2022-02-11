@@ -161,7 +161,7 @@
       integer                                           :: r_max
       integer                                           :: r_min
       integer                                           :: sarrus_i
-      integer, dimension (c_min : c_max, r_max : r_min) :: field
+      integer, dimension (c_min : c_max, r_min : r_max) :: field
 
       sarrus_i2d    = 0
 
