@@ -118,15 +118,15 @@
       sarrus_i1d    = 0
 
       if (lower + 8 .eq. upper) then
-          sarrus_i1d    = sarrus_i ( field (lower    )                 &
-                                   , field (lower + 1)                 &
-                                   , field (lower + 2)                 &
-                                   , field (lower + 3)                 &
-                                   , field (lower + 4)                 &
-                                   , field (lower + 5)                 &
-                                   , field (lower + 6)                 &
-                                   , field (lower + 7)                 &
-                                   , field (upper    )                 &
+          sarrus_i1d    = sarrus_i ( field (lower    )                         &
+                                   , field (lower + 1)                         &
+                                   , field (lower + 2)                         &
+                                   , field (lower + 3)                         &
+                                   , field (lower + 4)                         &
+                                   , field (lower + 5)                         &
+                                   , field (lower + 6)                         &
+                                   , field (lower + 7)                         &
+                                   , field (upper    )                         &
                                    )
       endif
 
