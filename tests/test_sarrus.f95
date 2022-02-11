@@ -47,10 +47,13 @@
 !> This program will check if all implementations match the expected return
 !> values.  These tests include the following cases:
 !>
-!> * nine integers
+!> * nine integer numbers
 !> * integer field, 1D, too long
 !> * integer field, 1D, too short
 !> * integer field, 1D, valid
+!> * integer field, 2D, too long
+!> * integer field, 2D, too short
+!> * integer field, 2D, valid
 !>
 !> Once the tests are done, the number of mismatched expectations will be
 !> written to `stdout` and will be set as exit code of the resulting
