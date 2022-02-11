@@ -152,7 +152,7 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      integer function sarrus_i2d (field, c_max, c_min, r_max, r_min)
+      integer function sarrus_i2d (field, c_min, c_max, r_min, r_max)
 
       implicit none
 
