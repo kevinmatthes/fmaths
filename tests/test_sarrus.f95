@@ -65,11 +65,14 @@
 
       implicit none
 
-      integer                       :: failures
-      integer                       :: i
-      integer, dimension (0 : 8)    :: i1d
-      integer                       :: sarrus_i
-      integer                       :: sarrus_i1d
+      integer                           :: failures
+      integer                           :: i
+      integer                           :: j
+      integer, dimension (0 : 8)        :: i1d
+      integer, dimension (0 : 2, 0 : 2) :: i2d
+      integer                           :: sarrus_i
+      integer                           :: sarrus_i1d
+      integer                           :: sarrus_i2d
 
       failures  = 0
 
