@@ -80,6 +80,12 @@
           i1d (i) = 0
     1 continue
 
+      do 2 i = 0, 2
+          do 3 j = 0, 2
+              i2d (i, j) = 0
+    3     continue
+    2 continue
+
       call ensure (sarrus_i (0, 0, 0, 0,  0, 0, 0, 0, 0) .eq.    0, failures)
       call ensure (sarrus_i (1, 0, 0, 0,  1, 0, 0, 0, 1) .eq.    1, failures)
       call ensure (sarrus_i (1, 2, 3, 4,  5, 6, 7, 8, 9) .eq.    0, failures)
@@ -108,6 +114,20 @@
       call ensure (sarrus_i1d (i1d, 0, 8) .eq. 24, failures)
       i1d (4)   = 42
       call ensure (sarrus_i1d (i1d, 0, 8) .eq. -716, failures)
+
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 3) .eq. 0, failures)
+      call ensure (sarrus_i2d (i2d, 0, 3, 0, 2) .eq. 0, failures)
+      call ensure (sarrus_i2d (i2d, 0, 3, 0, 3) .eq. 0, failures)
+
+      call ensure (sarrus_i2d (i2d, 0, 1, 0, 1) .eq. 0, failures)
+      call ensure (sarrus_i2d (i2d, 0, 1, 0, 2) .eq. 0, failures)
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 1) .eq. 0, failures)
+
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 0, failures)
+      do 4 i = 0, 2
+          i2d (i, i) = 1
+    4 continue
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 1, failures)
 
       print *, failures, 'sarrus.f95'
 
