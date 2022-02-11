@@ -86,11 +86,12 @@
     3     continue
     2 continue
 
-      call ensure (sarrus_i (0, 0, 0, 0,  0, 0, 0, 0, 0) .eq.    0, failures)
-      call ensure (sarrus_i (1, 0, 0, 0,  1, 0, 0, 0, 1) .eq.    1, failures)
-      call ensure (sarrus_i (1, 2, 3, 4,  5, 6, 7, 8, 9) .eq.    0, failures)
-      call ensure (sarrus_i (1, 2, 3, 4,  5, 6, 7, 8, 1) .eq.   24, failures)
-      call ensure (sarrus_i (1, 2, 3, 4, 42, 6, 7, 8, 1) .eq. -716, failures)
+      call ensure (sarrus_i (0,  0, 0, 0,  0, 0, 0, 0, 0) .eq.    0, failures)
+      call ensure (sarrus_i (1,  0, 0, 0,  1, 0, 0, 0, 1) .eq.    1, failures)
+      call ensure (sarrus_i (1,  2, 3, 4,  5, 6, 7, 8, 9) .eq.    0, failures)
+      call ensure (sarrus_i (1,  2, 3, 4,  5, 6, 7, 8, 1) .eq.   24, failures)
+      call ensure (sarrus_i (1,  2, 3, 4, 42, 6, 7, 8, 1) .eq. -716, failures)
+      call ensure (sarrus_i (1, 23, 3, 4, 42, 6, 7, 8, 1) .eq.   82, failures)
 
       call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0, failures)
 
@@ -114,6 +115,8 @@
       call ensure (sarrus_i1d (i1d, 0, 8) .eq. 24, failures)
       i1d (4)   = 42
       call ensure (sarrus_i1d (i1d, 0, 8) .eq. -716, failures)
+      i1d (1)   = 23
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 82, failures)
 
       call ensure (sarrus_i2d (i2d, 0, 2, 0, 3) .eq. 0, failures)
       call ensure (sarrus_i2d (i2d, 0, 3, 0, 2) .eq. 0, failures)
@@ -128,6 +131,21 @@
           i2d (i, i) = 1
     4 continue
       call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 1, failures)
+      i2d (0, 1)   = 2
+      i2d (0, 2)   = 3
+      i2d (1, 0)   = 4
+      i2d (1, 1)   = 5
+      i2d (1, 2)   = 6
+      i2d (2, 0)   = 7
+      i2d (2, 1)   = 8
+      i2d (2, 2)   = 9
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 0, failures)
+      i2d (2, 2)   = 1
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 24, failures)
+      i2d (1, 1)   = 42
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. -716, failures)
+      i2d (0, 1)   = 23
+      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 82, failures)
 
       print *, failures, 'sarrus.f95'
 
