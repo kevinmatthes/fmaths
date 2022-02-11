@@ -81,6 +81,7 @@
       call ensure (sarrus_i (1, 2, 3, 4, 42, 6, 7, 8, 1) .eq. -716, failures)
 
       call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0, failures)
+      
       call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0, failures)
 
       call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0, failures)
