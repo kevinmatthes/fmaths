@@ -116,30 +116,19 @@
 
       integer, dimension (lower : upper)    :: field
 
-      integer   :: f0
-      integer   :: f1
-      integer   :: f2
-      integer   :: f3
-      integer   :: f4
-      integer   :: f5
-      integer   :: f6
-      integer   :: f7
-      integer   :: f8
-
       sarrus_i1d    = 0
 
       if (lower + 8 .eq. upper) then
-          f0    = field (lower)
-          f1    = field (lower + 1)
-          f2    = field (lower + 2)
-          f3    = field (lower + 3)
-          f4    = field (lower + 4)
-          f5    = field (lower + 5)
-          f6    = field (lower + 6)
-          f7    = field (lower + 7)
-          f8    = field (upper)
-          
-          sarrus_i1d    = sarrus_i (f0, f1, f2, f3, f4, f5, f6, f7, f8)
+          sarrus_i1d    = sarrus_i ( field (lower    )                 &
+                                   , field (lower + 1)                 &
+                                   , field (lower + 2)                 &
+                                   , field (lower + 3)                 &
+                                   , field (lower + 4)                 &
+                                   , field (lower + 5)                 &
+                                   , field (lower + 6)                 &
+                                   , field (lower + 7)                 &
+                                   , field (upper    )                 &
+                                   )
       endif
 
       end
