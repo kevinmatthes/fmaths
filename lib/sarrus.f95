@@ -110,10 +110,9 @@
 
       implicit none
 
-      integer   :: lower
-      integer   :: upper
-      integer   :: sarrus_i
-
+      integer                               :: lower
+      integer                               :: upper
+      integer                               :: sarrus_i
       integer, dimension (lower : upper)    :: field
 
       sarrus_i1d    = 0
