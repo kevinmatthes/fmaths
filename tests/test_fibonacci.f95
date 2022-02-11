@@ -66,8 +66,6 @@
 
       failures  = 0
 
-
-
       call ensure (fibonacci (- 4) .eq. 0,  failures)
       call ensure (fibonacci (- 3) .eq. 0,  failures)
       call ensure (fibonacci (- 2) .eq. 0,  failures)
@@ -83,8 +81,6 @@
       call ensure (fibonacci (  8) .eq. 21, failures)
       call ensure (fibonacci (  9) .eq. 34, failures)
       call ensure (fibonacci ( 10) .eq. 55, failures)
-
-
 
       print *, failures, 'fibonacci.f95'
 
