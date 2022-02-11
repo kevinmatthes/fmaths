@@ -163,10 +163,10 @@
       integer                                           :: sarrus_i
       integer, dimension (c_min : c_max, r_max : r_min) :: field
 
-      sarrus_i1d    = 0
+      sarrus_i2d    = 0
 
       if (c_min + 2 .eq. c_max .and. r_min + 2 .eq. r_max) then
-          sarrus_i1d    = sarrus_i ( field (c_min    , r_min    )              &
+          sarrus_i2d    = sarrus_i ( field (c_min    , r_min    )              &
                                    , field (c_min    , r_min + 1)              &
                                    , field (c_min    , r_max    )              &
                                    , field (c_min + 1, r_min    )              &
