@@ -62,20 +62,15 @@
       implicit none
 
       integer   :: failures
+      integer   :: i
       integer   :: sarrus_i1d
       integer, dimension (0 : 8)    :: i1d
 
       failures  = 0
 
-      i1d (0)   = 0
-      i1d (1)   = 0
-      i1d (2)   = 0
-      i1d (3)   = 0
-      i1d (4)   = 0
-      i1d (5)   = 0
-      i1d (6)   = 0
-      i1d (7)   = 0
-      i1d (8)   = 0
+      do 1 i = 0, 8
+          i1d (i) = 0
+    1 continue
 
 
 
