@@ -145,7 +145,8 @@
 !> \return  The determinant of the given matrix.
 !>
 !> This implementation takes care about `INTEGER` matrices which are indexed as
-!> 2D arrays.
+!> 2D arrays.  Thereby, the first index represents the column whereas the second
+!> one stands for the row of the given matrix.
 !>
 !> In case that the given field should not provide nine elements, zero would be
 !> returned instead.
