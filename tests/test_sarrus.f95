@@ -47,6 +47,7 @@
 !> This program will check if all implementations match the expected return
 !> values.  These tests include the following cases:
 !>
+!> * nine integers
 !> * integer field, 1D, too long
 !> * integer field, 1D, too short
 !> * integer field, 1D, valid
@@ -63,6 +64,7 @@
 
       integer   :: failures
       integer   :: i
+      integer   :: sarrus_i
       integer   :: sarrus_i1d
       integer, dimension (0 : 8)    :: i1d
 
@@ -72,18 +74,20 @@
           i1d (i) = 0
     1 continue
 
+      call ensure (sarrus_i (0, 0, 0, 0,  0, 0, 0, 0, 0) .eq.    0, failures)
+      call ensure (sarrus_i (1, 0, 0, 0,  1, 0, 0, 0, 1) .eq.    1, failures)
+      call ensure (sarrus_i (1, 2, 3, 4,  5, 6, 7, 8, 9) .eq.    0, failures)
+      call ensure (sarrus_i (1, 2, 3, 4,  5, 6, 7, 8, 1) .eq.   24, failures)
+      call ensure (sarrus_i (1, 2, 3, 4, 42, 6, 7, 8, 1) .eq. -716, failures)
 
+      call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0, failures)
+      call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0, failures)
 
-      ! sarrus_i1d.
-      call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0,  failures)
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0, failures)
       i1d (0)   = 1
       i1d (4)   = 1
       i1d (8)   = 1
-      call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 1,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0,  failures)
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 1, failures)
       i1d (1)   = 2
       i1d (2)   = 3
       i1d (3)   = 4
@@ -92,19 +96,11 @@
       i1d (6)   = 7
       i1d (7)   = 8
       i1d (8)   = 9
-      call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0,  failures)
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 0, failures)
       i1d (8)   = 1
-      call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 24,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0,  failures)
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. 24, failures)
       i1d (4)   = 42
-      call ensure (sarrus_i1d (i1d, 0, 9) .eq. 0,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 8) .eq. -716,  failures)
-      call ensure (sarrus_i1d (i1d, 0, 7) .eq. 0,  failures)
-
-
+      call ensure (sarrus_i1d (i1d, 0, 8) .eq. -716, failures)
 
       print *, failures, 'sarrus.f95'
 
