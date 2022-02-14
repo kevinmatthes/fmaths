@@ -50,8 +50,10 @@ ensured.
 
 ## Content
 
-| File          | Description                                   |
-|:--------------|:----------------------------------------------|
-| `euclid.f95`  | The Euclidean Algorithm.                      |
+| File              | Description                                   |
+|:------------------|:----------------------------------------------|
+| `euclid.f95`      | The Euclidean Algorithm.                      |
+| `fibonacci.f95`   | The Fibonacci Numbers.                        |
+| `sarrus.f95`      | Sarrus's Determinant Algorithm.               |
 
 <!----------------------------------------------------------------------------->
