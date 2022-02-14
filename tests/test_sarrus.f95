@@ -212,7 +212,7 @@
       do 5 i = 0, 2
           r2d (i, i) = 1
     5 continue
-      call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 1, failures)
+      call ensure (abs (sarrus_2d (r2d, 0, 2, 0, 2) - 1) .le. tolerance, failures)
       r2d (0, 1)   = 2
       r2d (0, 2)   = 3
       r2d (1, 0)   = 4
