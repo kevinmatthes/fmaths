@@ -75,12 +75,8 @@
       real  :: f7
       real  :: f8
 
-      sarrus    =          f0 * f4 * f8
-      sarrus    = sarrus + f3 * f7 * f2
-      sarrus    = sarrus + f6 * f1 * f5
-      sarrus    = sarrus - f0 * f7 * f5
-      sarrus    = sarrus - f3 * f1 * f8
-      sarrus    = sarrus - f6 * f4 * f2
+      sarrus    = f0 * f4 * f8 + f3 * f7 * f2 + f6 * f1 * f5                   &
+                - f0 * f7 * f5 - f3 * f1 * f8 - f6 * f4 * f2
 
       end
 
@@ -219,12 +215,8 @@
       integer   :: f7
       integer   :: f8
 
-      sarrus_i  =            f0 * f4 * f8
-      sarrus_i  = sarrus_i + f3 * f7 * f2
-      sarrus_i  = sarrus_i + f6 * f1 * f5
-      sarrus_i  = sarrus_i - f0 * f7 * f5
-      sarrus_i  = sarrus_i - f3 * f1 * f8
-      sarrus_i  = sarrus_i - f6 * f4 * f2
+      sarrus_i  = f0 * f4 * f8 + f3 * f7 * f2 + f6 * f1 * f5                   &
+                - f0 * f7 * f5 - f3 * f1 * f8 - f6 * f4 * f2
 
       end
 
