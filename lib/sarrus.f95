@@ -134,10 +134,10 @@
 !!
 !> \brief   Calculate the determinant of a 2D 3×3-matrix.
 !> \param   field   The array providing the values.
-!> \param   c_max   The lower index limit (columns).
-!> \param   c_min   The upper index limit (columns).
-!> \param   r_max   The lower index limit (rows).
-!> \param   r_min   The upper index limit (rows).
+!> \param   c_max   The upper index limit (columns).
+!> \param   c_min   The lower index limit (columns).
+!> \param   r_max   The upper index limit (rows).
+!> \param   r_min   The lower index limit (rows).
 !> \return  The determinant of the given matrix.
 !>
 !> This implementation takes care about `REAL` matrices which are indexed as 2D
@@ -274,10 +274,10 @@
 !!
 !> \brief   Calculate the determinant of a 2D 3×3-matrix.
 !> \param   field   The array providing the values.
-!> \param   c_max   The lower index limit (columns).
-!> \param   c_min   The upper index limit (columns).
-!> \param   r_max   The lower index limit (rows).
-!> \param   r_min   The upper index limit (rows).
+!> \param   c_max   The upper index limit (columns).
+!> \param   c_min   The lower index limit (columns).
+!> \param   r_max   The upper index limit (rows).
+!> \param   r_min   The lower index limit (rows).
 !> \return  The determinant of the given matrix.
 !>
 !> This implementation takes care about `INTEGER` matrices which are indexed as
