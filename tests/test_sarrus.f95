@@ -41,7 +41,12 @@
 !> \brief   The main function in order to test `sarrus.f95`.
 !> \return  The count of mismatched expectations.
 !> \sa      ensure
+!> \sa      sarrus
+!> \sa      sarrus_1d
+!> \sa      sarrus_2d
+!> \sa      sarrus_i
 !> \sa      sarrus_i1d
+!> \sa      sarrus_i2d
 !> \sa      sarrus.f95
 !>
 !> This program will check if all implementations match the expected return
@@ -54,6 +59,13 @@
 !> * integer field, 2D, too long
 !> * integer field, 2D, too short
 !> * integer field, 2D, valid
+!> * nine real numbers
+!> * real field, 1D, too long
+!> * real field, 1D, too short
+!> * real field, 1D, valid
+!> * real field, 2D, too long
+!> * real field, 2D, too short
+!> * real field, 2D, valid
 !>
 !> Once the tests are done, the number of mismatched expectations will be
 !> written to `stdout` and will be set as exit code of the resulting
@@ -73,16 +85,25 @@
       integer                           :: sarrus_i
       integer                           :: sarrus_i1d
       integer                           :: sarrus_i2d
+      real                              :: sarrus
+      real, dimension (0 : 8)           :: r1d
+      real, dimension (0 : 2, 0 : 2)    :: r2d
+      real                              :: sarrus_1d
+      real                              :: sarrus_2d
+      real                              :: tolerance
 
       failures  = 0
+      tolerance = 0e5
 
       do 1 i = 0, 8
           i1d (i) = 0
+          r1d (i) = 0
     1 continue
 
       do 2 i = 0, 2
           do 3 j = 0, 2
               i2d (i, j) = 0
+              r2d (i, j) = 0
     3     continue
     2 continue
 
