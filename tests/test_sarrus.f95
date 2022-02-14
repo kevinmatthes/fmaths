@@ -85,9 +85,9 @@
       integer                           :: sarrus_i
       integer                           :: sarrus_i1d
       integer                           :: sarrus_i2d
-      real                              :: sarrus
       real, dimension (0 : 8)           :: r1d
       real, dimension (0 : 2, 0 : 2)    :: r2d
+      real                              :: sarrus
       real                              :: sarrus_1d
       real                              :: sarrus_2d
       real                              :: tolerance
