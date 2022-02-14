@@ -41,7 +41,151 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
+!> \brief   Calculate the determinant of a 3×3-matrix.
+!> \param   f0  The matrix element `a11`.
+!> \param   f1  The matrix element `a21`.
+!> \param   f2  The matrix element `a31`.
+!> \param   f3  The matrix element `a12`.
+!> \param   f4  The matrix element `a22`.
+!> \param   f5  The matrix element `a32`.
+!> \param   f6  The matrix element `a13`.
+!> \param   f7  The matrix element `a23`.
+!> \param   f8  The matrix element `a33`.
+!> \return  The determinant of the given matrix.
+!>
+!> This implementation handles real matrices which are given by single values
+!> instead of being organised in a field.
+!>
+!> The matrix is assumed to be defined as follows in terms of GNU Octave:  `[ 0
+!> 3  6 ; 1  4  7 ; 2  5  8 ]`.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      real function sarrus (f0, f1, f2, f3, f4, f5, f6, f7, f8)
+
+      implicit none
+
+      real  :: f0
+      real  :: f1
+      real  :: f2
+      real  :: f3
+      real  :: f4
+      real  :: f5
+      real  :: f6
+      real  :: f7
+      real  :: f8
+
+      sarrus    =          f0 * f4 * f8
+      sarrus    = sarrus + f3 * f7 * f2
+      sarrus    = sarrus + f6 * f1 * f5
+      sarrus    = sarrus - f0 * f7 * f5
+      sarrus    = sarrus - f3 * f1 * f8
+      sarrus    = sarrus - f6 * f4 * f2
+
+      end
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
 !> \brief   Calculate the determinant of a linear 3×3-matrix.
+!> \param   field   The array providing the values.
+!> \param   lower   The lower index limit.
+!> \param   upper   The upper index limit.
+!> \return  The determinant of the given matrix.
+!>
+!> This implementation takes care about `REAL` matrices which are indexed
+!> linearly.
+!>
+!> The matrix is assumed to be defined as follows in terms of GNU Octave:  `[ 0
+!> 3  6 ; 1  4  7 ; 2  5  8 ]`.  Thereby, the given number is considered the
+!> offset to be added to `lower`.
+!>
+!> In case that the given field should not provide nine elements, zero would be
+!> returned instead.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      real function sarrus_1d (field, lower, upper)
+
+      implicit none
+
+      integer                           :: lower
+      integer                           :: upper
+      real                              :: sarrus
+      real, dimension (lower : upper)   :: field
+
+      sarrus_1d    = 0
+
+      if (lower + 8 .eq. upper) then
+          sarrus_1d = sarrus ( field (lower    )                               &
+                             , field (lower + 1)                               &
+                             , field (lower + 2)                               &
+                             , field (lower + 3)                               &
+                             , field (lower + 4)                               &
+                             , field (lower + 5)                               &
+                             , field (lower + 6)                               &
+                             , field (lower + 7)                               &
+                             , field (upper    )                               &
+                             )
+      endif
+
+      end
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   Calculate the determinant of a 2D 3×3-matrix.
+!> \param   field   The array providing the values.
+!> \param   c_max   The lower index limit (columns).
+!> \param   c_min   The upper index limit (columns).
+!> \param   r_max   The lower index limit (rows).
+!> \param   r_min   The upper index limit (rows).
+!> \return  The determinant of the given matrix.
+!>
+!> This implementation takes care about `REAL` matrices which are indexed as 2D
+!> arrays.  Thereby, the first index represents the column whereas the second
+!> one stands for the row of the given matrix.
+!>
+!> In case that the given field should not provide nine elements, zero would be
+!> returned instead.
+!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+      integer function sarrus_2d (field, c_min, c_max, r_min, r_max)
+
+      implicit none
+
+      integer                                           :: c_max
+      integer                                           :: c_min
+      integer                                           :: r_max
+      integer                                           :: r_min
+      real                                              :: sarrus
+      real, dimension (c_min : c_max, r_min : r_max)    :: field
+
+      sarrus_2d    = 0
+
+      if (c_min + 2 .eq. c_max .and. r_min + 2 .eq. r_max) then
+          sarrus_2d = sarrus ( field (c_min    , r_min    )                    &
+                             , field (c_min    , r_min + 1)                    &
+                             , field (c_min    , r_max    )                    &
+                             , field (c_min + 1, r_min    )                    &
+                             , field (c_min + 1, r_min + 1)                    &
+                             , field (c_min + 1, r_max    )                    &
+                             , field (c_max    , r_min    )                    &
+                             , field (c_max    , r_min + 1)                    &
+                             , field (c_max    , r_max    )                    &
+                             )
+      endif
+
+      end
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!
+!> \brief   Calculate the determinant of a 3×3-matrix.
 !> \param   f0  The matrix element `a11`.
 !> \param   f1  The matrix element `a21`.
 !> \param   f2  The matrix element `a31`.
