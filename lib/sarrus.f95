@@ -153,7 +153,7 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      integer function sarrus_2d (field, c_min, c_max, r_min, r_max)
+      real function sarrus_2d (field, c_min, c_max, r_min, r_max)
 
       implicit none
 
