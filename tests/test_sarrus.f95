@@ -168,12 +168,18 @@
       i2d (0, 1)   = 23
       call ensure (sarrus_i2d (i2d, 0, 2, 0, 2) .eq. 82, failures)
 
-      call ensure (abs (sarrus (0.,  0., 0., 0.,  0., 0., 0., 0., 0.)          ) .le. tolerance, failures)
-      call ensure (abs (sarrus (1.,  0., 0., 0.,  1., 0., 0., 0., 1.) -     1. ) .le. tolerance, failures)
-      call ensure (abs (sarrus (1.,  2., 3., 4.,  5., 6., 7., 8., 9.)          ) .le. tolerance, failures)
-      call ensure (abs (sarrus (1.,  2., 3., 4.,  5., 6., 7., 8., 1.) -    24. ) .le. tolerance, failures)
-      call ensure (abs (sarrus (1.,  2., 3., 4., 42., 6., 7., 8., 1.) - (-716.)) .le. tolerance, failures)
-      call ensure (abs (sarrus (1., 23., 3., 4., 42., 6., 7., 8., 1.) -    82. ) .le. tolerance, failures)
+      call ensure (abs (sarrus (0.,  0., 0., 0.,  0., 0., 0., 0., 0.)          &
+                       ) .le. tolerance, failures)
+      call ensure (abs (sarrus (1.,  0., 0., 0.,  1., 0., 0., 0., 1.) -     1. &
+                       ) .le. tolerance, failures)
+      call ensure (abs (sarrus (1.,  2., 3., 4.,  5., 6., 7., 8., 9.)          &
+                       ) .le. tolerance, failures)
+      call ensure (abs (sarrus (1.,  2., 3., 4.,  5., 6., 7., 8., 1.) -    24. &
+                       ) .le. tolerance, failures)
+      call ensure (abs (sarrus (1.,  2., 3., 4., 42., 6., 7., 8., 1.) - (-716.)&
+                       ) .le. tolerance, failures)
+      call ensure (abs (sarrus (1., 23., 3., 4., 42., 6., 7., 8., 1.) -    82. &
+                       ) .le. tolerance, failures)
 
       call ensure (abs (sarrus_1d (r1d, 0, 9)) .le. tolerance, failures)
 
@@ -196,7 +202,8 @@
       r1d (8)   = 1
       call ensure (abs (sarrus_1d (r1d, 0, 8) - 24) .le. tolerance, failures)
       r1d (4)   = 42
-      call ensure (abs (sarrus_1d (r1d, 0, 8) - (-716)) .le. tolerance, failures)
+      call ensure ( abs (sarrus_1d (r1d, 0, 8) - (-716)) .le. tolerance        &
+                  , failures )
       r1d (1)   = 23
       call ensure (abs (sarrus_1d (r1d, 0, 8) - 82) .le. tolerance, failures)
 
@@ -212,7 +219,8 @@
       do 5 i = 0, 2
           r2d (i, i) = 1
     5 continue
-      call ensure (abs (sarrus_2d (r2d, 0, 2, 0, 2) - 1) .le. tolerance, failures)
+      call ensure ( abs (sarrus_2d (r2d, 0, 2, 0, 2) - 1) .le. tolerance       &
+                  , failures )
       r2d (0, 1)   = 2
       r2d (0, 2)   = 3
       r2d (1, 0)   = 4
@@ -223,11 +231,14 @@
       r2d (2, 2)   = 9
       call ensure (abs (sarrus_2d (r2d, 0, 2, 0, 2)) .le. tolerance, failures)
       r2d (2, 2)   = 1
-      call ensure (abs (sarrus_2d (r2d, 0, 2, 0, 2) - 24) .le. tolerance, failures)
+      call ensure ( abs (sarrus_2d (r2d, 0, 2, 0, 2) - 24) .le. tolerance      &
+                  , failures )
       r2d (1, 1)   = 42
-      call ensure (abs (sarrus_2d (r2d, 0, 2, 0, 2) - (-716)) .le. tolerance, failures)
+      call ensure ( abs (sarrus_2d (r2d, 0, 2, 0, 2) - (-716)) .le. tolerance  &
+                  , failures )
       r2d (0, 1)   = 23
-      call ensure (abs (sarrus_2d (r2d, 0, 2, 0, 2) - 82) .le. tolerance, failures)
+      call ensure ( abs (sarrus_2d (r2d, 0, 2, 0, 2) - 82) .le. tolerance      &
+                  , failures )
 
       print *, failures, 'sarrus.f95'
 
