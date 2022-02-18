@@ -63,14 +63,19 @@
 
       integer   :: failures
       real      :: jones
-      real      :: tolerance
+      real      :: pi
 
       failures  = 0
-      tolerance = 1e-6
+      pi        = 4. * atan (1.)
 
-      call ensure (     jones (-  1)                   .le. tolerance, failures)
-      call ensure (     jones (   0)                   .le. tolerance, failures)
-      call ensure (abs (jones ( 100) - 4. * atan (1.)) .le. tolerance, failures)
+      call ensure (     jones (-  1)       .le. 1.0e-15, failures)
+      call ensure (     jones (   0)       .le. 1.0e-15, failures)
+      call ensure (abs (jones (   1) - pi) .le. 1.5e-02, failures)
+      call ensure (abs (jones (   2) - pi) .le. 1.5e-03, failures)
+      call ensure (abs (jones (   3) - pi) .le. 8.5e-05, failures)
+      call ensure (abs (jones (   4) - pi) .le. 7.0e-06, failures)
+      call ensure (abs (jones (   5) - pi) .le. 5.0e-07, failures)
+      call ensure (abs (jones (   6) - pi) .le. 2.5e-07, failures)
 
       print *, failures, 'jones.f95'
 
