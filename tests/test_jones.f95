@@ -62,9 +62,15 @@
       implicit none
 
       integer   :: failures
-      integer   :: jones
+      real      :: jones
+      real      :: tolerance
 
       failures  = 0
+      tolerance = 1e-6
+
+      call ensure (     jones (-  1)                   .le. tolerance, failures)
+      call ensure (     jones (   0)                   .le. tolerance, failures)
+      call ensure (abs (jones ( 100) - 4. * atan (1.)) .le. tolerance, failures)
 
       print *, failures, 'jones.f95'
 
