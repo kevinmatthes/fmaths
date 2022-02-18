@@ -51,7 +51,26 @@
 
       implicit none
 
-      integer   :: n
+      integer           :: i
+      integer           :: n
+      real, parameter   :: const = 2. * sqrt (3.)
+      real              :: nine
+      real              :: number
+
+      jones = 0
+
+      if (n .gt. 0) then
+          jones = jones + const
+
+          do 1 i = 1, n
+              nine      = nine * 9.
+              number    = i * 4.
+
+              jones = jones                                                    &
+                    + (1. / (number + 1.)) * (     const / nine)               &
+                    - (1. / (number - 1.)) * (3. * const / nine)
+    1     continue
+      endif
 
       end
 
