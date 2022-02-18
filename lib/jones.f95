@@ -21,17 +21,16 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       A possible implementation of the Euclidean Algorithm.
+!> \brief       A possible implementation of the Jones Series.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        euclid.f95
+!> \file        jones.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides an implementation of the Euclidean Algorithm.  It works
-!> fine with both positive and negative integers and does not care about their
-!> order when passed to the function.
+!> This file provides an implementation of the Jones Series, a possibility in
+!> order to calculate the value of Pi.
 !>
 !> The compilation of this file requires at least Fortran 95 support.
 !!
@@ -39,53 +38,20 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   Calculate the Greatest Common Divisor of two given integers.
-!> \param   a   One of the integers to process.
-!> \param   b   One of the integers to process.
-!> \return  The Greatest Common Divisor of the given integers.
+!> \brief   Calculate the value of Pi.
+!> \param   n   The number of iterations.
+!> \return  An approximation of Pi.
 !>
-!> This implementation works fine with both positive and negative integers and
-!> does not care about the actual order they were passed to the function.
-!>
-!> Regarding the further behaviour, this function is intended to return the same
-!> values `Prelude.gcd` of Haskell would return.  Hence, `euclid (0, 0)` would
-!> result in `0`, for instance.
+!> This function implements the Pi Series introduced by William Jones.  It
+!> returns a reasonable approximation of Pi after just 100 iterations.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      integer function euclid (a, b)
+      real function jones (n)
 
       implicit none
 
-      integer   :: a
-      integer   :: b
-      integer   :: greater
-      integer   :: lesser
-      integer   :: remainder
-
-      greater   = max (abs (a), abs (b))
-      lesser    = min (abs (a), abs (b))
-
-      if (greater .eq. 0) then
-          euclid    = lesser
-      else if (lesser  .eq. 0) then
-          euclid    = greater
-      else
-    1     continue
-
-          if (lesser .eq. 0) then
-              goto 2
-          else
-              remainder = mod (greater, lesser)
-              greater   = lesser
-              lesser    = remainder
-              goto 1
-          endif
-
-    2     continue
-
-          euclid = greater
-      endif
+      integer   :: n
 
       end
 
