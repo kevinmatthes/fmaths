@@ -89,7 +89,7 @@ desired library using `ar`.  The main build routine is organised using GNU
 Octave.
 
 Since one might intend to create some manuals for introduction and / or later
-reference, there two build instructions which document the repository using
+reference, there are two build instructions which document the repository using
 Pandoc and the library, together with the provided tests, using Doxygen.  Since
 Doxygen relies on `make` in order to finalise the \LaTeX\ documentation, one
 needs to ensure this application, as well.  **This is only required for Linux
