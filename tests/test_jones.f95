@@ -21,15 +21,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       Tests for the Euclidean Algorithm.
+!> \brief       Tests for the Jones Series.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        test_euclid.f95
+!> \file        test_jones.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides a test routine for `euclid.f95`.
+!> This file provides a test routine for `jones.f95`.
 !>
 !> The compilation of this file requires at least Fortran 95 support as well as
 !> access to the GNU Fortran Extensions.
@@ -38,21 +38,18 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   The main function in order to test `euclid`.
+!> \brief   The main function in order to test `jones`.
 !> \return  The count of mismatched expectations.
 !> \sa      ensure
-!> \sa      euclid
-!> \sa      euclid.f95
+!> \sa      jones
+!> \sa      jones.f95
 !>
-!> This program will check if `euclid` matches the expected return values.
-!> These tests include the following cases:
+!> This program will check if `jones` matches the expected return values.  These
+!> tests include the following cases:
 !>
-!> * both arguments are zero
-!> * one argument is non-zero
-!> * both arguments are non-zero
-!> * one argument is a prime number, the other one is zero
-!> * one argument is a prime number, the other one is non-zero
-!> * both arguments are prime numbers
+!> * argument < 0
+!> * argument = 0
+!> * argument > 0
 !>
 !> Once the tests are done, the number of mismatched expectations will be
 !> written to `stdout` and will be set as exit code of the resulting
@@ -60,66 +57,16 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      program test_euclid
+      program test_jones
 
       implicit none
 
-      integer   :: euclid
       integer   :: failures
+      integer   :: jones
 
       failures  = 0
 
-      call ensure (euclid ( 0,  0) .eq. 0, failures)
-      call ensure (euclid ( 0, -0) .eq. 0, failures)
-      call ensure (euclid (-0,  0) .eq. 0, failures)
-      call ensure (euclid (-0, -0) .eq. 0, failures)
-
-      call ensure (euclid ( 0,  4) .eq. 4, failures)
-      call ensure (euclid ( 0, -4) .eq. 4, failures)
-      call ensure (euclid (-0,  4) .eq. 4, failures)
-      call ensure (euclid (-0, -4) .eq. 4, failures)
-      call ensure (euclid ( 4,  0) .eq. 4, failures)
-      call ensure (euclid ( 4, -0) .eq. 4, failures)
-      call ensure (euclid (-4,  0) .eq. 4, failures)
-      call ensure (euclid (-4, -0) .eq. 4, failures)
-
-      call ensure (euclid (  4,  18) .eq. 2, failures)
-      call ensure (euclid (  4, -18) .eq. 2, failures)
-      call ensure (euclid (- 4,  18) .eq. 2, failures)
-      call ensure (euclid (- 4, -18) .eq. 2, failures)
-      call ensure (euclid ( 18,   4) .eq. 2, failures)
-      call ensure (euclid ( 18, - 4) .eq. 2, failures)
-      call ensure (euclid (-18,   4) .eq. 2, failures)
-      call ensure (euclid (-18, - 4) .eq. 2, failures)
-
-      call ensure (euclid ( 23,  42) .eq. 1, failures)
-      call ensure (euclid ( 23, -42) .eq. 1, failures)
-      call ensure (euclid (-23,  42) .eq. 1, failures)
-      call ensure (euclid (-23, -42) .eq. 1, failures)
-      call ensure (euclid ( 42,  23) .eq. 1, failures)
-      call ensure (euclid ( 42, -23) .eq. 1, failures)
-      call ensure (euclid (-42,  23) .eq. 1, failures)
-      call ensure (euclid (-42, -23) .eq. 1, failures)
-
-      call ensure (euclid ( 0,  2) .eq. 2, failures)
-      call ensure (euclid ( 0, -2) .eq. 2, failures)
-      call ensure (euclid (-0,  2) .eq. 2, failures)
-      call ensure (euclid (-0, -2) .eq. 2, failures)
-      call ensure (euclid ( 2,  0) .eq. 2, failures)
-      call ensure (euclid ( 2, -0) .eq. 2, failures)
-      call ensure (euclid (-2,  0) .eq. 2, failures)
-      call ensure (euclid (-2, -0) .eq. 2, failures)
-
-      call ensure (euclid ( 23,  53) .eq. 1, failures)
-      call ensure (euclid ( 23, -53) .eq. 1, failures)
-      call ensure (euclid (-23,  53) .eq. 1, failures)
-      call ensure (euclid (-23, -53) .eq. 1, failures)
-      call ensure (euclid ( 53,  23) .eq. 1, failures)
-      call ensure (euclid ( 53, -23) .eq. 1, failures)
-      call ensure (euclid (-53,  23) .eq. 1, failures)
-      call ensure (euclid (-53, -23) .eq. 1, failures)
-
-      print *, failures, 'euclid.f95'
+      print *, failures, 'jones.f95'
 
       if (failures .ne. 0) then
           call exit (failures)
