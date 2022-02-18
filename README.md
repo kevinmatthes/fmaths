@@ -84,6 +84,8 @@ invoked by calling `repository-manual.m`.
 | Pandoc            | application   | compilation of repository manual      |
 | `texlive-full`    | package       | compilation of repository manual      |
 
+## Build Process
+
 The provided source code will be compiled with `gfortran` and bound to the
 desired library using `ar`.  The main build routine is organised using GNU
 Octave.
@@ -108,5 +110,14 @@ octave repository-manual.m
 Once an Octave script from the root directory of this repository is called,
 Octave will take care about the rest and will write the current progress to the
 terminal.
+
+**In order to build the library, one just needs to call the following command:**
+
+```
+octave compile-library.m
+```
+
+**The library will then be saved in the `./lib/` directory.**  There is nothing
+else to do in order to compile it.
 
 <!----------------------------------------------------------------------------->
