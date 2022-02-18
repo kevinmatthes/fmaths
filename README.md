@@ -71,4 +71,42 @@ When compiling a printable version of this documentation using Pandoc, the full
 license will be attached automatically to the resulting document.  This can be
 invoked by calling `repository-manual.m`.
 
+## Software Requirements
+
+| Requirement       | Type          | Role                                  |
+|:------------------|:-------------:|:--------------------------------------|
+| `ar`              | application   | create and update static libraries    |
+| `docs-snippets`   | repository    | documentation constants               |
+| Doxygen           | application   | creation of source code documentation |
+| `gfortran`        | application   | compilation of provided source code   |
+| GNU Octave        | application   | execution of the provided scripts     |
+| `make`            | application   | finalisation of Doxygen documentation |
+| Pandoc            | application   | compilation of repository manual      |
+| `texlive-full`    | package       | compilation of repository manual      |
+
+The provided source code will be compiled with `gfortran` and bound to the
+desired library using `ar`.  The main build routine is organised using GNU
+Octave.
+
+Since one might intend to create some manuals for introduction and / or later
+reference, there two build instructions which document the repository using
+Pandoc and the library, together with the provided tests, using Doxygen.  Since
+Doxygen relies on `make` in order to finalise the \LaTeX\ documentation, one
+needs to ensure this application, as well.  **This is only required for Linux
+machines since Doxygen for Windows will generate a `BAT` file to be executed in
+the default Windows terminal.**
+
+The build instructions themselves can be invoked by passing them to GNU Octave
+on the command line.  Any build instruction is stored as a GNU Octave script on
+its own, denoted by the file extension `*.m`.  Hence, calling them is proceeded
+as follows:
+
+```
+octave repository-manual.m
+```
+
+Once an Octave script from the root directory of this repository is called,
+Octave will take care about the rest and will write the current progress to the
+terminal.
+
 <!----------------------------------------------------------------------------->
