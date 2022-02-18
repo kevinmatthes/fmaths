@@ -60,6 +60,9 @@ compiler.call   = [compiler.self compiler.flags];
 files.euclid.out    = './test_euclid';
 files.euclid.self   = ' test_euclid.f95 ';
 
+files.jones.out     = './test_jones';
+files.jones.self    = ' test_jones.f95 ';
+
 files.fibonacci.out     = './test_fibonacci';
 files.fibonacci.self    = ' test_fibonacci.f95 ';
 
@@ -81,6 +84,11 @@ compiler.euclid    = [compiler.call files.euclid.self];
 compiler.euclid    = [compiler.euclid compiler.link];
 compiler.euclid    = [compiler.euclid ' -o '];
 compiler.euclid    = [compiler.euclid files.euclid.out];
+
+compiler.jones  = [compiler.call files.jones.self];
+compiler.jones  = [compiler.jones compiler.link];
+compiler.jones  = [compiler.jones ' -o '];
+compiler.jones  = [compiler.jones files.jones.out];
 
 compiler.fibonacci = [compiler.call files.fibonacci.self];
 compiler.fibonacci = [compiler.fibonacci compiler.link];
@@ -111,6 +119,9 @@ disp ([banner 'Compile test suites ...']);
 disp (compiler.euclid);
 system (compiler.euclid);
 
+disp (compiler.jones);
+system (compiler.jones);
+
 disp (compiler.fibonacci);
 system (compiler.fibonacci);
 
@@ -125,6 +136,7 @@ disp ([banner 'Done.']);
 disp ([banner 'Run tests ...']);
 
 failures += system (files.euclid.out);
+failures += system (files.jones.out);
 failures += system (files.fibonacci.out);
 failures += system (files.sarrus.out);
 
@@ -141,6 +153,10 @@ fprintf ([banner 'Remove test suites ... ']);
 
 if length (glob (files.euclid.out));
     delete (files.euclid.out);
+end;
+
+if length (glob (files.jones.out));
+    delete (files.jones.out);
 end;
 
 if length (glob (files.fibonacci.out));
