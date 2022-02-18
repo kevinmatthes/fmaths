@@ -93,7 +93,7 @@
       real                              :: tolerance
 
       failures  = 0
-      tolerance = 0e5
+      tolerance = 1e-15
 
       do 1 i = 0, 8
           i1d (i) = 0
