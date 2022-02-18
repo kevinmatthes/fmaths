@@ -53,6 +53,7 @@ ensured.
 | File              | Description                                   |
 |:------------------|:----------------------------------------------|
 | `euclid.f95`      | The Euclidean Algorithm.                      |
+| `jones.f95`       | The Jones Series for Pi.                      |
 | `fibonacci.f95`   | The Fibonacci Numbers.                        |
 | `sarrus.f95`      | Sarrus's Determinant Algorithm.               |
 
