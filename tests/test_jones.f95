@@ -62,6 +62,7 @@
       implicit none
 
       integer   :: failures
+      integer   :: i
       real      :: jones
       real      :: pi
 
@@ -75,7 +76,9 @@
       call ensure (abs (jones ( 3) - pi) .le. 8.5e-05, failures)
       call ensure (abs (jones ( 4) - pi) .le. 7.0e-06, failures)
       call ensure (abs (jones ( 5) - pi) .le. 5.0e-07, failures)
-      call ensure (abs (jones ( 6) - pi) .le. 2.5e-07, failures)
+      do 1 i = 6, 100
+          call ensure (abs (jones ( i) - pi) .le. 2.5e-07, failures)
+    1 continue
 
       print *, failures, 'jones.f95'
 
