@@ -55,20 +55,20 @@
 
       integer   :: i
       integer   :: n
+      integer   :: nine
       real      :: const
-      real      :: nine
 
       jones = 0
 
       if (n .gt. 0) then
           const = 2. * sqrt (3.)
           jones = jones + const
-          nine  = 9.
+          nine  = 9
 
           do 1 i = 1, n
               jones = jones + (1. / (i * 4. + 1.)) * (     const / nine)       &
                             - (1. / (i * 4. - 1.)) * (3. * const / nine)
-              nine  = nine * 9.
+              nine  = nine * 9
     1     continue
       endif
 
