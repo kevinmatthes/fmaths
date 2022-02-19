@@ -29,8 +29,8 @@
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides an implementation of the Jones Series, a possibility in
-!> order to calculate the value of Pi.
+!> This file provides an implementation of the Jones Series, a possibility to
+!> calculate the value of Pi.
 !>
 !> The compilation of this file requires at least Fortran 95 support.
 !!
