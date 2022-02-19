@@ -53,6 +53,7 @@
 
       implicit none
 
+      integer   :: four
       integer   :: i
       integer   :: n
       integer   :: nine
@@ -62,12 +63,15 @@
 
       if (n .gt. 0) then
           const = 2. * sqrt (3.)
+          four  = 4
           jones = jones + const
           nine  = 9
 
           do 1 i = 1, n
-              jones = jones + (1. / (i * 4. + 1.)) * (     const / nine)       &
-                            - (1. / (i * 4. - 1.)) * (3. * const / nine)
+              jones = jones + (1. / (four + 1.)) * (     const / nine)         &
+                            - (1. / (four - 1.)) * (3. * const / nine)
+
+              four  = four + 4
               nine  = nine * 9
     1     continue
       endif
