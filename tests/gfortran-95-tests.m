@@ -71,6 +71,9 @@ files.sarrus.self   = ' test_sarrus.f95 ';
 
 files.self  = ' gfortran-95-tests.m ';
 
+files.somayaji.out  = './test_somayaji';
+files.somayaji.self = ' test_somayaji.f95 ';
+
 
 
 % Control flow.
@@ -100,6 +103,11 @@ compiler.sarrus = [compiler.sarrus compiler.link];
 compiler.sarrus = [compiler.sarrus ' -o '];
 compiler.sarrus = [compiler.sarrus files.sarrus.out];
 
+compiler.somayaji   = [compiler.call files.somayaji.self];
+compiler.somayaji   = [compiler.somayaji compiler.link];
+compiler.somayaji   = [compiler.somayaji ' -o '];
+compiler.somayaji   = [compiler.somayaji files.somayaji.out];
+
 
 
 %%%%
@@ -128,6 +136,9 @@ system (compiler.fibonacci);
 disp (compiler.sarrus);
 system (compiler.sarrus);
 
+disp (compiler.somayaji);
+system (compiler.somayaji);
+
 disp ([banner 'Done.']);
 
 
@@ -139,6 +150,7 @@ failures += system (files.euclid.out);
 failures += system (files.jones.out);
 failures += system (files.fibonacci.out);
 failures += system (files.sarrus.out);
+failures += system (files.somayaji.out);
 
 if ~ failures;
     disp ([banner 'No failures found.']);
@@ -165,6 +177,10 @@ end;
 
 if length (glob (files.sarrus.out));
     delete (files.sarrus.out);
+end;
+
+if length (glob (files.somayaji.out));
+    delete (files.somayaji.out);
 end;
 
 disp ('Done.');
