@@ -44,8 +44,8 @@
 !>
 !> This function implements the Pi Series introduced by William Jones.  It
 !> returns a reasonable approximation of Pi after just 6 iterations.  The least
-!> difference from the most exact value, 4 · atan (1), is lower than 2.5e-7 and
-!> will not become smaller with more than 6 iterations.
+!> difference from the most exact value, 4 · atan (1), is then lower than 2.5e-7
+!> and will not become smaller with more iterations.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
