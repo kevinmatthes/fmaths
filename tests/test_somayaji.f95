@@ -21,7 +21,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       Tests for the Jones Series.
+!> \brief       Tests for the Somayaji Series.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
@@ -29,7 +29,7 @@
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides a test routine for `jones.f95`.
+!> This file provides a test routine for `somayaji.f95`.
 !>
 !> The compilation of this file requires at least Fortran 95 support as well as
 !> access to the GNU Fortran Extensions.
@@ -38,14 +38,14 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
-!> \brief   The main function in order to test `jones`.
+!> \brief   The main function in order to test `somayaji`.
 !> \return  The count of mismatched expectations.
 !> \sa      ensure
-!> \sa      jones
-!> \sa      jones.f95
+!> \sa      somayaji
+!> \sa      somayaji.f95
 !>
-!> This program will check if `jones` matches the expected return values.  These
-!> tests include the following cases:
+!> This program will check if `somayaji` matches the expected return values.
+!> These tests include the following cases:
 !>
 !> * argument < 0
 !> * argument = 0
@@ -57,30 +57,18 @@
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      program test_jones
+      program test_somayaji
 
       implicit none
 
       integer   :: failures
-      integer   :: i
-      real      :: jones
+      real      :: somayaji
       real      :: pi
 
       failures  = 0
       pi        = 4. * atan (1.)
 
-      call ensure (     jones (-1)       .le. 1.0e-15, failures)
-      call ensure (     jones ( 0)       .le. 1.0e-15, failures)
-      call ensure (abs (jones ( 1) - pi) .le. 1.5e-02, failures)
-      call ensure (abs (jones ( 2) - pi) .le. 1.5e-03, failures)
-      call ensure (abs (jones ( 3) - pi) .le. 8.5e-05, failures)
-      call ensure (abs (jones ( 4) - pi) .le. 7.0e-06, failures)
-      call ensure (abs (jones ( 5) - pi) .le. 5.0e-07, failures)
-      do 1 i = 6, 100
-          call ensure (abs (jones ( i) - pi) .le. 2.5e-07, failures)
-    1 continue
-
-      print *, failures, 'jones.f95'
+      print *, failures, 'somayaji.f95'
 
       if (failures .ne. 0) then
           call exit (failures)
