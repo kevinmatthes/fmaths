@@ -56,5 +56,6 @@ ensured.
 | `jones.f95`       | The Jones Series for Pi.                      |
 | `fibonacci.f95`   | The Fibonacci Numbers.                        |
 | `sarrus.f95`      | Sarrus's Determinant Algorithm.               |
+| `somayaji.f95`    | The Somayaji Series for Pi.                   |
 
 <!----------------------------------------------------------------------------->
