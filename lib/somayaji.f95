@@ -44,8 +44,8 @@
 !>
 !> This function implements the Pi Series introduced by Kelallur Nilakantha
 !> Somayaji.  It returns a reasonable approximation of Pi after 160 iterations.
-!> The difference from the most exact value, 4 · atan (1), then is lower than
-!> 2.5e-7 and will not become smaller with more than 160 iterations.
+!> The difference from the most exact value, 4 · atan (1), is then lower than
+!> 2.5e-7 and will not become smaller with more iterations.
 !>
 !> Interestingly, the determined approximation exactly equals 4 · atan (1) if
 !> 94, 96, 98, 100, 102, 104, 106, 108 or 110 iterations are processed.
