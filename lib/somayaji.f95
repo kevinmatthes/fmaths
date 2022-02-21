@@ -53,7 +53,23 @@
 
       implicit none
 
+      integer   :: i
+      integer   :: n
+      integer   :: number
+      integer   :: sign
+
       somayaji = 0
+
+      if (n .gt. 0) then
+          sign      = -1
+          somayaji  = somayaji + 3.
+
+          do 1 i = 1, n
+              number    = i * 2 + 1
+              sign      = -1 * sign
+              somayaji  = somayaji + sign * 4. / (number ** 3. - number)
+    1     continue
+      endif
 
       end
 
