@@ -21,15 +21,15 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!
 !> \author      Kevin Matthes
-!> \brief       A possible implementation of the Jones Series.
+!> \brief       A possible implementation of the Somayaji Series.
 !> \copyright   (C) 2022 Kevin Matthes.
 !>              This file is licensed GPL 2 as of June 1991.
 !> \date        2022
-!> \file        jones.f95
+!> \file        somayaji.f95
 !> \note        See `LICENSE' for full license.
 !>              See `README.md' for project details.
 !>
-!> This file provides an implementation of the Jones Series, a possibility to
+!> This file provides an implementation of the Somayaji Series, a possibility to
 !> calculate the value of Pi.
 !>
 !> The compilation of this file requires at least Fortran 95 support.
@@ -42,39 +42,18 @@
 !> \param   n   The number of iterations.
 !> \return  An approximation of Pi.
 !>
-!> This function implements the Pi Series introduced by William Jones.  It
-!> returns a reasonable approximation of Pi after just 6 iterations.  The least
-!> difference from the most exact value, `4. * atan (1.)`, is lower than 2.5e-7
-!> and will not become smaller with more than 6 iterations.
+!> This function implements the Pi Series introduced by Kelallur Nilakantha
+!> Somayaji.  It returns a reasonable approximation of Pi after ... iterations.
+!> The least difference from the most exact value, `4. * atan (1.)`, is lower
+!> than ... and will not become smaller with more than ... iterations.
 !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-      real function jones (n)
+      real function somayaji (n)
 
       implicit none
 
-      integer   :: four
-      integer   :: i
-      integer   :: n
-      integer   :: nine
-      real      :: const
-
-      jones = 0
-
-      if (n .gt. 0) then
-          const = 2. * sqrt (3.)
-          four  = 4
-          jones = jones + const
-          nine  = 9
-
-          do 1 i = 1, n
-              jones = jones + (1. / (four + 1.)) * (     const / nine)         &
-                            - (1. / (four - 1.)) * (3. * const / nine)
-
-              four  = four + 4
-              nine  = nine * 9
-    1     continue
-      endif
+      somayaji = 0
 
       end
 
